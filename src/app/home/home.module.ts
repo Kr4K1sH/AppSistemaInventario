@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { InicioComponent } from './inicio/inicio.component';
+import { AcercaDeComponent } from './acerca-de/acerca-de.component';
 
 
 @NgModule({
   declarations: [
-    InicioComponent
+    InicioComponent,
+    AcercaDeComponent
   ],
   imports: [
     CommonModule,
@@ -15,3 +17,4 @@ import { InicioComponent } from './inicio/inicio.component';
   ]
 })
 export class HomeModule { }
+
