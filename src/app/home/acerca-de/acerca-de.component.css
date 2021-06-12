@@ -1,0 +1,25 @@
+.imgInfo{
+  border-bottom-left-radius: 2em;
+  border-top-right-radius: 2em;
+}
+
+.imgDeveloper{
+  height: 310px;
+  width: 310px;
+  border-radius: 10em;
+}
+
+.socialMedia{
+  height: 45px;
+   width: 100px;
+}
+
+.logo{
+  height:200px;
+  border-radius: 8em;
+}
+
+
+
+
+

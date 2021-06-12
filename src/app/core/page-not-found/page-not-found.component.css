@@ -1,0 +1,15 @@
+#img404{
+  display: block;
+  width: 500px;
+  height: 400px;
+  background-image: url("../../resources/404.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.awsomeIconHome{
+  font-weight: bold;
+  font-size: xx-large;
+  color: #b68d40;
+}

@@ -1,0 +1,20 @@
+.flexline {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.imgCatalog {
+  height: 260px;
+}
+
+.middleContent {
+  display: flex;
+  justify-content: center;
+}
+
+.textformat {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

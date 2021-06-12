@@ -1,49 +1,186 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="color:#B68D40;">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-        aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarExample01">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" aria-current="page" href="#" style="color: #B68D40">WareHouse Tools</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" style="color: #B68D40">Procesos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" style="color: #B68D40">Mantenimientos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" style="color: #B68D40">Reportes</a>
-          </li>
-          <li class="nav-item">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="fas fa-tools awsomeNav">
+      </i> <span class="awsomeNaveTitle"> WareHouse Tools</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link awsomeNaveTitle" aria-current="page" href="/">Home</a>
+        </li>
 
-            <a class="nav-link" routerLink="/home/acercade" routerLinkActive="active" style="color: #B68D40"> Acerca de</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle awsomeNaveTitle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Mantenimientos
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item awsomeNaveSubTitle" href="#">
+                Proveedores &raquo;
+              </a>
+              <ul class="dropdown-menu dropdown-submenu bg-dark">
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
+                </li>
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="dropdown-item awsomeNaveSubTitle" href="#">
+                Contactos &raquo;
+              </a>
+              <ul class="dropdown-menu dropdown-submenu bg-dark">
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
+                </li>
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="dropdown-item awsomeNaveSubTitle" href="#">
+                Productos &raquo;
+              </a>
+              <ul class="dropdown-menu dropdown-submenu bg-dark">
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
+                </li>
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
+                </li>
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">En reposición</a>
+                </li>
 
+              </ul>
+            </li>
+            <li>
+              <hr class="dropdown-divider awsomeNaveTitle">
+            </li>
+            <li>
+              <a class="dropdown-item awsomeNaveSubTitle" href="#">
+              Usuarios &raquo;
+            </a>
+            <ul class="dropdown-menu dropdown-submenu bg-dark">
+              <li>
+                <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
+              </li>
+              <li>
+                <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver Solicitudes</a>
+              </li>
+              <li>
+                <a class="dropdown-item awsomeNaveSubTitle" href="#">Administrar Usuarios</a>
+              </li>
+              <li>
+                <a class="dropdown-item awsomeNaveSubTitle" href="#">Usuarios Deshabilitados</a>
+              </li>
+
+            </ul>
           </li>
-        </ul>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle awsomeNaveTitle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Procesos
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item awsomeNaveSubTitle" href="#">
+                Movimientos &raquo;
+              </a>
+              <ul class="dropdown-menu dropdown-submenu bg-dark">
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
+                </li>
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
+                </li>
+
+              </ul>
+            </li>
+            <li>
+              <a class="dropdown-item awsomeNaveSubTitle" href="#">
+                Entradas &raquo;
+              </a>
+              <ul class="dropdown-menu dropdown-submenu bg-dark">
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
+                </li>
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
+                </li>
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Mis registros</a><!--registros con el id del usuario logueado-->
+                </li>
+
+              </ul>
+
+            </li>
+            <li>
+              <a class="dropdown-item awsomeNaveSubTitle" href="#">
+                Salidas &raquo;
+              </a>
+              <ul class="dropdown-menu dropdown-submenu bg-dark">
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
+                </li>
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
+                </li>
+                <li>
+                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Mis registros</a>
+                  <!--registros con el id del usuario logueado-->
+                </li>
+
+              </ul>
+            </li>
+            <li>
+              <hr class="dropdown-divider awsomeNaveTitle">
+            </li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" href="#">Registros de inventario</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle awsomeNaveTitle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Reportes
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item awsomeNaveSubTitle" href="#">Reporte de Entradas</a></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" href="#">Reporte de Salidas</a></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" href="#">Reporte de Productos con mayor salidas</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link awsomeNaveTitle" routerLink="/home/acercade">Acerca de</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <div class="container-fluid btn-group dropstart">
+          <button type="button" class="btn btn-dark" id="imgProfile" data-bs-toggle="dropdown" aria-expanded="false">
+
+          </button>
+          <ul class="dropdown-menu bg-dark menudrop">
+            <li><p class="dropdown-item textLabel">Nombre Usuario</p></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" href="#">Editar Perfil</a></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" href="#">Salir</a></li>
+          </ul>
+        </div>
       </div>
     </div>
+  </div>
+</nav>
+<br>
+<br>
 
-    <!--  DROPDOWN-->
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle bg-dark text-white" type="button" id="Usuario"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        Usuario
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="Usuario">
-        <li><a class="dropdown-item" href="#">Iniciar sesion</a></li>
-        <li><a class="dropdown-item" href="#">Editar Perfil</a></li>
-        <li><a class="dropdown-item" href="#">Salir</a></li>
-      </ul>
-    </div><i class="fas fa-user" style="height: 45px; width: 100px;"></i>
-
-
-
-
-
-  </nav>
-  <!-- Navbar -->
