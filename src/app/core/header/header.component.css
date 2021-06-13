@@ -1,3 +1,7 @@
+.navcolor{
+  background-color: rgb(37, 35, 35);
+}
+
 .dropdown-menu li {
   position: relative;
 }
