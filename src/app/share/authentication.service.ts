@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { userInfo } from 'os';
 
 @Injectable({
   providedIn: 'root',
@@ -46,7 +45,7 @@ export class AuthenticationService {
   createUser(user: any): Observable<any> {
     //http://127.0.0.1:8000/api/v1/
     return this.http.post<any>(
-      this.ServerUrl + 'videojuego/auth/register',
+      this.ServerUrl + 'inventory/auth/register',
       user
     );
   }
@@ -54,7 +53,7 @@ export class AuthenticationService {
   //Login
   loginUser(user: any): Observable<any> {
     return this.http
-      .post<any>(this.ServerUrl + 'videojuego/auth/login', user)
+      .post<any>(this.ServerUrl + 'inventory/auth/login', user)
       .pipe(
         map((user) => {
           // almacene los detalles del usuario y el token jwt
@@ -77,7 +76,7 @@ export class AuthenticationService {
       //Eliminarlo del observable del boleano si esta autenticado
       this.authenticated.next(false);
 
-      return this.http.post<any>(this.ServerUrl + 'videojuego/auth/logout', {});
+      return this.http.post<any>(this.ServerUrl + 'inventory/auth/logout', {});
     }
   }
 }
