@@ -4,8 +4,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -16,10 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
     PageNotFoundComponent
   ],
   imports: [
-    CommonModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    CommonModule, RouterModule
   ],
   exports: [
     HeaderComponent,
