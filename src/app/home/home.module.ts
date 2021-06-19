@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { InicioComponent } from './inicio/inicio.component';
 import { AcercaDeComponent } from './acerca-de/acerca-de.component';
+import { ProductosModule } from '../productos/productos.module';
 import { IndicadoresComponent } from './indicadores/indicadores.component';
 import { ShareModule } from '../share/share.module';
 
@@ -12,12 +13,13 @@ import { ShareModule } from '../share/share.module';
   declarations: [
     InicioComponent,
     AcercaDeComponent,
-    IndicadoresComponent
+    IndicadoresComponent,
 
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
+    ProductosModule,
     ShareModule
 
   ]
