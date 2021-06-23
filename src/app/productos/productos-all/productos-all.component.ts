@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GenericService } from 'src/app/share/generic.service';
-import { NotificacionService } from 'src/app/share/notification.service';
 
 @Component({
-  selector: 'app-catalogoproductos',
-  templateUrl: './catalogoproductos.component.html',
-  styleUrls: ['./catalogoproductos.component.css']
+  selector: 'app-productos-all',
+  templateUrl: './productos-all.component.html',
+  styleUrls: ['./productos-all.component.css'],
 })
-export class CatalogoproductosComponent implements OnInit {
+
+export class ProductAllComponent implements OnInit{
+
   datos: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
-
-
   constructor(
-    private gService: GenericService,
-    private notificacion: NotificacionService
-  ) {
-      this.listaCatlogoProductos();
-     }
+    private router: Router,
+    private route: ActivatedRoute,
+    private gService: GenericService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.listaProductosAdmin();
+  }
 
-  listaCatlogoProductos(){
+  listaProductosAdmin() {
     this.gService
       .list('inventory/product')
       .pipe(takeUntil(this.destroy$))
@@ -38,3 +39,7 @@ export class CatalogoproductosComponent implements OnInit {
   }
 
 }
+
+
+
+

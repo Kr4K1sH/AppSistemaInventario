@@ -64,14 +64,32 @@
     display: block;
     align-items: center;
   }
+
+  #imgProfile {
+    padding: 0%;
+    border-radius: 7em;
+    height: 50px;
+    width: 50px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 }
 
-#imgProfile {
-  padding: 0%;
-  border-radius: 7em;
-  height: 50px;
-  width: 50px;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+@media (max-width: 900px) {
+  .menudrop {
+    display: block;
+    align-items: center;
+  }
+
+  #imgProfile {
+    padding: 0%;
+    border-radius: 7em;
+    height: 50px;
+    width: 50px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 }
+

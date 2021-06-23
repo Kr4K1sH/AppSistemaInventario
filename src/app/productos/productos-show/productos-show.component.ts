@@ -1,33 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GenericService } from 'src/app/share/generic.service';
-import { NotificacionService } from 'src/app/share/notification.service';
 
 @Component({
-  selector: 'app-catalogoproductos',
-  templateUrl: './catalogoproductos.component.html',
-  styleUrls: ['./catalogoproductos.component.css']
+  selector: 'app-productos-show',
+  templateUrl: './productos-show.component.html',
+  styleUrls: ['./productos-show.component.css'],
 })
-export class CatalogoproductosComponent implements OnInit {
+
+export class ProductosShowComponent implements OnInit {
   datos: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
-
-
   constructor(
     private gService: GenericService,
-    private notificacion: NotificacionService
-  ) {
-      this.listaCatlogoProductos();
-     }
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
-  listaCatlogoProductos(){
+    let id = +this.route.snapshot.paramMap.get('id');
+
+    this.obtenerProducto(id);
+  }
+  obtenerProducto(id: any) {
     this.gService
-      .list('inventory/product')
+      .get('inventory/product', id)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
+
         this.datos = data;
       });
   }
@@ -36,5 +38,7 @@ export class CatalogoproductosComponent implements OnInit {
     // Desinscribirse
     this.destroy$.unsubscribe();
   }
+
+
 
 }
