@@ -10,7 +10,7 @@ import { NotificacionService } from 'src/app/share/notification.service';
   styleUrls: ['./user-login.component.css'],
 })
 export class UserLoginComponent implements OnInit {
-  formulario!: FormGroup;
+  formulario: FormGroup;
   makeSubmit: boolean = false;
   infoUsuario: any;
   constructor(
@@ -75,4 +75,3 @@ export class UserLoginComponent implements OnInit {
     );
   };
 }
-

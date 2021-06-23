@@ -6,6 +6,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { UserModule } from '../user/user.module';
+
 
 
 @NgModule({
@@ -16,7 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule,UserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],

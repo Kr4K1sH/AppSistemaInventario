@@ -1,1 +1,123 @@
 <p>user-create works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="FormCreate" (ngSubmit)="submitForm()" novalidate>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="identificacion" formControlName="identificacion" />
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('identificacion', 'required')" class="text-danger">
+              La identificacion es requerida
+            </small>
+          </div>
+        </div>
+<br><br>
+
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Nombre usuario" formControlName="name" />
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('name', 'required')" class="text-danger">
+              El nombre de usuario es requerido
+            </small>
+          </div>
+        </div>
+
+        <br><br>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="primerApellido" formControlName="primerApellido" />
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('primerApellido', 'required')" class="text-danger">
+              El primer apellido es requerido
+            </small>
+          </div>
+        </div>
+        <br><br>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="segundoApellido" formControlName="segundoApellido" />
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('segundoApellido', 'required')" class="text-danger">
+              El Segundo apellido es requerido
+            </small>
+          </div>
+        </div>
+<br><br>
+<div class="form-group">
+  <label for="roles">estado</label>
+  <select class="form-control" formControlName="estado">
+    <option value="1">
+      {{'Habilitado'}}
+    </option>
+    <option value="0">
+      {{'Des-Habilitado'}}
+    </option>
+  </select>
+</div>
+<br><br>
+
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="email" formControlName="email" />
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('email', 'required')" class="text-danger">
+              El email es requerido
+            </small>
+          </div>
+        </div>
+<br><br>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Password" formControlName="password" />
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('password', 'required')" class="text-danger">
+              El password es requerido
+            </small>
+          </div>
+        </div>
+<br><br>
+
+<div>
+  <label>Seleccionar foto</label>
+  <input type="file" class="input-file" formControlName="foto" placeholder="Foto"/>
+  <div class="col-sm-4">
+    <small *ngIf="errorHandling('foto', 'required')" class="text-danger">
+      La Foto es requerida
+    </small>
+  </div>
+</div>
+
+
+
+
+ <!-- <div class="form-group">
+          <input type="text" class="form-control" placeholder="Foto" formControlName="foto" />
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('foto', 'required')" class="text-danger">
+             La foto es requerida
+            </small>
+          </div>
+        </div> -->
+<br><br>
+        <div class="form-group">
+          <label for="roles">Rol</label>
+          <select class="form-control" formControlName="profile_id">
+            <option *ngFor="let perfil of perfiles " [value]="this.perfil.id">
+              {{perfil.descripcion}}
+            </option>
+          </select>
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('profile_id', 'required')" class="text-danger">
+              El rol es requerido
+            </small>
+          </div>
+        </div>
+<br><br>
+        <div class="btn-group" role="group">
+          <button type="submit" class="btn btn-primary">Registrar</button>
+          <br><br>
+          <button type="reset" (click)="onReset()" class="btn btn-secondary">
+            Cancelar
+          </button>
+        </div>
+        <br><br>
+      </form>
+    </div>
+  </div>
+</div>

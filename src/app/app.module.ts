@@ -11,8 +11,9 @@ import { UserModule } from './user/user.module';
 import { ProductosModule } from './productos/productos.module';
 
 
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent ],
   imports: [
     BrowserModule,
     // importar HttpClientModule después BrowserModule.

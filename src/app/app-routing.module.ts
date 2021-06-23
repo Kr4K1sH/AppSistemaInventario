@@ -6,6 +6,7 @@ import { InicioComponent } from './home/inicio/inicio.component';
 const routes: Routes = [
   { path: '', component: InicioComponent, redirectTo: '', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
+ 
 ];
 
 @NgModule({
