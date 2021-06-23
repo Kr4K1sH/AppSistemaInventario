@@ -13,120 +13,23 @@
 
   <div class="row flexline">
     <br> <br>
-    <div class="col-md-3">
+    <div class="col-md-4" *ngFor="let item of datos">
       <div class="card">
-        <img class="card-img-top img-fluid imgCatalog"
-          src="https://cr.epaenlinea.com/pub/media/version20200605/catalog/product/cache/a83b746ef25730b9cb1cc414bac0f04a/3/0/3027010_211.jpg"
-          alt="Card image cap">
+        <img src="{{item.imagen}}" class="card-img-top img-fluid imgCatalog" data-toggle="tooltip" data-placement="bottom"
+          title="{{item.nombre}}" /><br>
         <div class="card-body text-center">
-          <h3 class="card-title">Cemex</h3>
-          <p class="card-text textformat">El cemento es el material de construcción más utilizado en el mundo. Aporta propiedades
-            útiles y deseables, tales como,resistencia a la compresión (el material de construcción con la mayor
-            resistencia por costo unitario), durabilidad y estética para una diversidad de aplicaciones de construcción
+          <h3 class="card-title">{{item.nombre}}</h3>
+          <p class="card-text textformat">
+            {{item.descripcion}}
           </p>
-          <a class="btn btn-sm btn-outline-dark" href="">Detalles</a> |
+          <a class="btn btn-sm btn-outline-dark" [routerLink]="['/product/',item.id]" routerLinkActive="active">Detalles</a> |
           <a class="btn btn-sm btn-warning" href="">Editar</a> |
           <a class="btn btn-sm btn-success" href="">Mover</a>
 
         </div>
       </div>
-    </div>
-
-    <div class="col-md-3 middleContent">
-      <div class="card">
-        <img class="card-img-top img-fluid imgCatalog"
-          src="https://cr.epaenlinea.com/pub/media/version20200605/catalog/product/cache/f0b46f36c41ddcfe5166fd88e24e9484/1/5/1535052.jpg"
-          alt="Card image cap">
-        <div class="card-body text-center">
-          <h3 class="card-title">General Electric</h3>
-          <p class="card-text textformat">Barra Led, enchufable 46 cm luz blanca suave.</p>
-          <a class="btn btn-sm btn-outline-dark" href="">Detalles</a> |
-          <a class="btn btn-sm btn-warning" href="">Editar</a> |
-          <a class="btn btn-sm btn-success" href="">Mover</a>
-        </div>
-      </div>
-    </div>
-
-    <br> <br>
-    <br> <br>
-    <div class="col-md-3">
-      <div class="card">
-        <img class="card-img-top img-fluid imgCatalog"
-          src="https://cr.epaenlinea.com/pub/media/version20200605/catalog/product/cache/a83b746ef25730b9cb1cc414bac0f04a/2/2/2246018_7.jpg"
-          alt="Card image cap">
-        <div class="card-body text-center">
-          <h3 class="card-title">Ceramica</h3>
-          <p class="card-text textformat">Cerámica pared beige 30x60cm 1,08m2 (Precio por caja). Revista las paredes de su hogar
-            usando la cerámica pared beige,30x 60 cm, 1,08m2 (precio por caja). Su estilo, detalles y color se adaptan a
-            cualquier espacio de su hogar combinando
-            con distintas decoraciones.</p>
-          <a class="btn btn-sm btn-outline-dark" href="">Detalles</a> |
-          <a class="btn btn-sm btn-warning" href="">Editar</a> |
-          <a class="btn btn-sm btn-success" href="">Mover</a>
-        </div>
-      </div>
+      <br />
+      <br />
     </div>
   </div>
-  <br> <br>
-
-  <!-- Products -->
-  <div class="row flexline">
-    <br> <br>
-
-    <div class="col-md-3">
-      <div class="card">
-        <img class="card-img-top img-fluid imgCatalog"
-          src="https://cr.epaenlinea.com/pub/media/version20200605/catalog/product/cache/a83b746ef25730b9cb1cc414bac0f04a/0/8/0823046_21.jpg"
-          alt="Card image cap">
-        <div class="card-body text-center">
-          <h3 class="card-title">Terra Nova</h3>
-          <p class="card-text textformat">Tierra abonada 17 L. Para sus labores de jardinería, esta es una compra de mucha utilidad y
-            grandes beneficios. Gracias a que contiene abono orgánico, su calidad repercute en el crecimiento y la salud
-            de sus plantas.</p>
-          <a class="btn btn-sm btn-outline-dark" href="">Detalles</a> |
-          <a class="btn btn-sm btn-warning" href="">Editar</a> |
-          <a class="btn btn-sm btn-success" href="">Mover</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 middleContent">
-      <div class="card">
-        <img class="card-img-top img-fluid imgCatalog"
-          src="https://cr.epaenlinea.com/pub/media/version20200605/catalog/product/cache/a83b746ef25730b9cb1cc414bac0f04a/1/2/1270034_7.jpg"
-          alt="Card image cap">
-        <div class="card-body text-center">
-          <h3 class="card-title">Cobra</h3>
-          <p class="card-text textformat">Destapador de cañería 25 pies por 1/4". El destapador de cañería 25 pies por 1/4" es un
-            cable sólido en forma de resorte que posee un agarradero fijo para dar torsión y así liberar cualquier tipo de
-            obstrucción. Por su diseño y tamaño es ideal para cualquier tubería.</p>
-          <a class="btn btn-sm btn-outline-dark" href="">Detalles</a> |
-          <a class="btn btn-sm btn-warning" href="">Editar</a> |
-          <a class="btn btn-sm btn-success" href="">Mover</a>
-        </div>
-      </div>
-    </div>
-
-    <br> <br>
-    <br> <br>
-    <div class="col-md-3">
-      <div class="card">
-        <img class="card-img-top img-fluid imgCatalog"
-          src="https://cr.epaenlinea.com/pub/media/version20200605/catalog/product/cache/a83b746ef25730b9cb1cc414bac0f04a/0/2/0281077.jpg"
-          alt="Card image cap">
-        <div class="card-body text-center">
-          <h3 class="card-title">Lanco</h3>
-          <p class="card-text textformat">Pintura Seal Coat satín blanco 5 gal. Seal-Coat 3 en 1 es ideal para usar en superficies
-            expuestas a la intemperie que necesitan flexibilidad. Es capaz de sellar grietas sobre estuco, cemento,
-            mampostería y ladrillo...</p>
-          <a class="btn btn-sm btn-outline-dark" href="">Detalles</a> |
-          <a class="btn btn-sm btn-warning" href="">Editar</a> |
-          <a class="btn btn-sm btn-success" href="">Mover</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <br>
-</div>
 

@@ -1,0 +1,45 @@
+<br>
+<br>
+<div class="col-md-13 container titleProduct">
+  <div class="card ">
+    <h5 class="card-header bg-dark text-center titleProduct">Registro de todos los Productos</h5>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table text-center">
+          <thead class="bg-light">
+            <tr class="border-0">
+              <th class="border-0">#</th>
+              <th class="border-0">Imagen</th>
+              <th class="border-0">Nombre</th>
+              <th class="border-0">Categoria</th>
+              <th class="border-0">Cantidad en stock</th>
+              <th class="border-0">Precio</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of datos">
+              <td>{{item.id}}</td>
+              <td>
+                <div class="m-r-10"><img
+                    src="{{item.imagen}}"
+                    alt="{{item.nombre}}" title="{{item.nombre}}" class="rounded" width="45">
+                </div>
+              </td>
+              <td>{{item.nombre}}</td>
+              <td>{{item.category.nombre}}</td>
+              <td>{{item.cantidad_total}}</td>
+              <td>${{item.costo_unidad}}</td>
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br> <br>
+<p></p>
+<p></p>
+

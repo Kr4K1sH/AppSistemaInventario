@@ -3,13 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { ShareModule } from './share/share.module';
 import { HomeModule } from './home/home.module';
 import { UserModule } from './user/user.module';
 import { ProductosModule } from './productos/productos.module';
-
+import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
+import { SupplierModule } from './supplier/supplier.module';
+import { EntradaModule } from './entrada/entrada.module';
+import { SalidaModule } from './salida/salida.module';
 
 
 @NgModule({
@@ -27,14 +30,23 @@ import { ProductosModule } from './productos/productos.module';
     // después los demás módulos
     HomeModule,
     UserModule,
+    SupplierModule,
     ProductosModule,
+    EntradaModule,
+    SalidaModule,
     // al final el gestor de las rutas principal
     AppRoutingModule,
-    ProductosModule,
+
 
   ],
 
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptorService,
+    multi: true,
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

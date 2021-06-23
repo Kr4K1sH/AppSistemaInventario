@@ -1,0 +1,54 @@
+<br><br>
+<div class="container margen">
+  <div class="row my-4">
+    <div class="col" *ngIf="datos?.id">
+      <!--si se encuentra un atributo id en datos-->
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
+        <div class="col p-4 d-flex flex-column position-static"><img src="{{ datos.imagen }}"
+            alt="Foto {{ datos.nombre }" class="img-thumbnail rounded float-left" /></div>
+        <div class="col p-4 d-flex flex-column position-static">
+
+          <h3 class="mb-0 titleproduct">{{ datos.nombre }}</h3>
+          <div class="mb-1 text-muted">
+            <b>Tipo:
+            </b> {{ datos.category.nombre }}
+          </div>
+          <p class="card-text"><b>Descripción: </b>{{ datos.descripcion }}</p>
+          <h4>{{ datos.precio | currency: 'USD'}}</h4>
+          <div class="card-text">
+            <b>Proveedores: </b>
+            <ul>
+              <li *ngFor="let item of datos.suppliers">
+                {{item.nombre}}
+              </li>
+            </ul>
+          </div>
+          <div class="card-text">
+            <b>Ubicaciones: </b>
+            <ul>
+              <li *ngFor="let item of datos.locations">
+                {{item.descripcion}}
+              </li>
+            </ul>
+          </div>
+          <p class="card-text mb-auto">
+            <b>Registrado por: {{datos.user.name}} {{datos.user.primerApellido}} {{datos.user.segundoApellido}}</b>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center">
+    <button class="btn btn-secondary">
+      <a class="text-white" href="/">
+        <i class="fas fa-undo-alt awsomeIcon"></i>
+        <label class="awsomeTitle">  Volver</label>
+      </a>
+    </button>
+
+  </div>
+  <br>
+  <br>
+</div>

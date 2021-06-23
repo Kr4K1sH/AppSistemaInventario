@@ -29,23 +29,11 @@
                   <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
                 </li>
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/supplier/all']" routerLinkActive="active">Ver todos los registros</a>
                 </li>
               </ul>
             </li>
-            <li>
-              <a class="dropdown-item awsomeNaveSubTitle" href="#">
-                Contactos &raquo;
-              </a>
-              <ul class="dropdown-menu dropdown-submenu bg-dark">
-                <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
-                </li>
-                <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
-                </li>
-              </ul>
-            </li>
+            
             <li>
               <a class="dropdown-item awsomeNaveSubTitle" href="#">
                 Productos &raquo;
@@ -55,7 +43,7 @@
                   <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
                 </li>
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/producto/all']" routerLinkActive="active">Ver todos los registros</a>
                 </li>
                 <li>
                   <a class="dropdown-item awsomeNaveSubTitle" href="#">En reposición</a>
@@ -117,7 +105,9 @@
                   <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
                 </li>
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
+                  <a class="dropdown-item awsomeNaveSubTitle"  [routerLink]="['/entrada/all']" routerLinkActive="active">
+                    Ver todos los registros
+                  </a>
                 </li>
                 <li>
                   <a class="dropdown-item awsomeNaveSubTitle" href="#">Mis registros</a><!--registros con el id del usuario logueado-->
@@ -135,7 +125,7 @@
                   <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
                 </li>
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/salida/all']" routerLinkActive="active">Ver todos los registros</a>
                 </li>
                 <li>
                   <a class="dropdown-item awsomeNaveSubTitle" href="#">Mis registros</a>

@@ -1,0 +1,82 @@
+<br>
+<br>
+<div class="col-md-13 container" style="color: #B68D40">
+  <div class="card ">
+    <h5 class="card-header bg-dark text-center" style="color: #B68D40">{{datos.nombre}}</h5>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="bg-light">
+            <tr class="border-1">
+
+              <th class="border-1">Dirección</th>
+              <th class="border-1">País</th>
+              <th class="border-1">Contactos</th>
+              <th class="border-1">Correos</th>
+              <th class="border-1">Productos</th>
+              <th class="border-1">Acciones</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border-1">
+                {{datos.direccion}}
+              </td>
+              <td class="border-1">
+                <p class="text-left">
+                  {{datos.pais}}
+                </p>
+              </td>
+              <td class="border-1">
+                <ul>
+                  <li *ngFor="let itemContact of datos.contacts">
+                    {{itemContact.nombre}} / {{itemContact.telefono}}
+                  </li>
+                </ul>
+              </td>
+              <td class="border-1">
+                <ul>
+                  <li *ngFor="let itemContact of datos.contacts">
+                    {{itemContact.correo}}
+                  </li>
+                </ul>
+              </td>
+              <td class="border-1">
+                <ul>
+                  <li *ngFor="let itemProducts of datos.products">
+                    {{itemProducts.nombre}} / ${{itemProducts.costo_unidad}}
+                  </li>
+                </ul>
+              </td>
+              <td class="border-1 text-center">
+                <div class="container">
+                  <a class="btn btn-warning" href="">
+                    <i class="far fa-edit"></i>
+                  </a>
+                </div>
+              </td>
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="container text-center">
+    <button class="btn btn-secondary">
+      <a class="text-white" href="/supplier/all">
+        <i class="fas fa-undo-alt awsomeIcon"></i>
+        <label class="awsomeTitle"> Volver</label>
+      </a>
+    </button>
+
+  </div>
+
+</div>
+<br> <br>
+<p></p>
+<p></p>

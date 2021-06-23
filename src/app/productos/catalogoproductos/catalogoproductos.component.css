@@ -2,10 +2,11 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+  margin-top: 30px;
 }
 
 .imgCatalog {
-  height: 260px;
+  height: 300px;
 }
 
 .middleContent {
