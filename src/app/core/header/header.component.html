@@ -33,7 +33,7 @@
                 </li>
               </ul>
             </li>
-            
+
             <li>
               <a class="dropdown-item awsomeNaveSubTitle" href="#">
                 Productos &raquo;
@@ -46,7 +46,7 @@
                   <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/producto/all']" routerLinkActive="active">Ver todos los registros</a>
                 </li>
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">En reposición</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/producto/reposicion']" routerLinkActive="active">En reposición</a>
                 </li>
 
               </ul>
@@ -175,26 +175,24 @@
         </div>
       </div>-->
       <div class="d-flex">
-        <div class="dropdown-item" *ngIf="isAutenticated">
-          <div class="form-group">{{currentUser.user.name}}</div>
-          <div class="form-group">{{currentUser.user.email}}</div>
-        </div>
-        <div class="container-fluid btn-group dropstart">
-          <button type="button" class="btn btn-dark" id="imgProfile" data-bs-toggle="dropdown" aria-expanded="false">
+        
+        <div class="container-fluid btn-group dropstart" *ngIf="isAutenticated">
+          <div type="button" class="btn btn-dark container" style="background-image: url('{{currentUser.user.foto}}');"
+            id="imgProfile" data-bs-toggle="dropdown" aria-expanded="false">
+          </div>
 
-          </button>
           <ul class="dropdown-menu bg-dark menudrop">
-<li>
-  <p class="dropdown-item textLabel">Nombre Usuario</p>
-</li>
-<li><a class="dropdown-item awsomeNaveSubTitle" href="#">Editar Perfil</a></li>
-<li><a class="dropdown-item awsomeNaveSubTitle" routerLink='user/registrar'>Registrar Usuario</a></li>
-<li><a class="dropdown-item awsomeNaveSubTitle" routerLink="user/login" routerLinkActive="active" *ngIf="!(isAutenticated)" >Login</a></li>
-<li><a class="dropdown-item awsomeNaveSubTitle" (click)="logout()"*ngIf="isAutenticated">Logout </a> </li>
+            <li>
+              <p class="dropdown-item textLabel">{{currentUser.user.name}} {{currentUser.user.primerApellido}}</p>
+            </li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" href="#">Editar Perfil</a></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" routerLink='user/registrar'>Registrar Usuario</a></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" routerLink="user/login" routerLinkActive="active" *ngIf="!(isAutenticated)" >Login</a></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" (click)="logout()"*ngIf="isAutenticated">Logout </a> </li>
 
-</ul>
-</div>
-</div>
+          </ul>
+          </div>
+          </div>
 
 
     </div>

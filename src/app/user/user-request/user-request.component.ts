@@ -5,12 +5,12 @@ import { takeUntil } from 'rxjs/operators';
 import { GenericService } from 'src/app/share/generic.service';
 
 @Component({
-  selector: 'app-productos-all',
-  templateUrl: './productos-all.component.html',
-  styleUrls: ['./productos-all.component.css'],
+  selector: 'app-user-request',
+  templateUrl: './user-request.component.html',
+  styleUrls: ['./user-request.component.css'],
 })
 
-export class ProductAllComponent implements OnInit{
+export class UserRequestComponent implements OnInit{
 
   datos: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -21,12 +21,13 @@ export class ProductAllComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.listaProductosAdmin();
+    this.listaUsuarios();
+
   }
 
-  listaProductosAdmin() {
+  listaUsuarios() {
     this.gService
-      .list('inventory/product/all')
+      .list('inventory/user/allDisable')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         this.datos = data;
@@ -39,7 +40,3 @@ export class ProductAllComponent implements OnInit{
   }
 
 }
-
-
-
-

@@ -18,6 +18,7 @@ export class AuthenticationService {
   //Booleano para estado de usuario autenticado
   private authenticated = new BehaviorSubject<boolean>(false);
   //Inyectar cliente HTTP para las solicitudes al API
+  public imgUser: String;
 
 
  constructor(private http: HttpClient) {
@@ -58,6 +59,8 @@ export class AuthenticationService {
         map((user) => {
           // almacene los detalles del usuario y el token jwt
           // en el almacenamiento local para mantener al usuario conectado entre las actualizaciones de la página
+          this.imgUser = user.foto;
+          console.log(this.imgUser);
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.authenticated.next(true);
           this.currentUserSubject.next(user);
