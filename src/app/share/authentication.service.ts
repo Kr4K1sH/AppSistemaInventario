@@ -58,6 +58,7 @@ export class AuthenticationService {
         map((user) => {
           // almacene los detalles del usuario y el token jwt
           // en el almacenamiento local para mantener al usuario conectado entre las actualizaciones de la página
+
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.authenticated.next(true);
           this.currentUserSubject.next(user);

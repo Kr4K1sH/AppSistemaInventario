@@ -11,7 +11,8 @@ import { ProductosShowComponent } from './productos-show/productos-show.componen
     ProductosreposicionComponent,
     CatalogoproductosComponent,
     ProductAllComponent,
-    ProductosShowComponent
+    ProductosShowComponent,
+    ProductosreposicionComponent,
   ],
   imports: [
     CommonModule,

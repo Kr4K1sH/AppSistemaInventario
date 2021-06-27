@@ -1,6 +1,8 @@
-<div class="col-md-13 container" style="color: #B68D40">
+<br>
+<br>
+<div class="col-md-13 container title">
   <div class="card ">
-    <h5 class="card-header bg-dark" style="color: #B68D40">Productos en reposicion</h5>
+    <h5 class="card-header bg-dark title">Productos en reposición</h5>
     <div class="card-body p-0">
       <div class="table-responsive">
         <table class="table">
@@ -9,67 +11,38 @@
               <th class="border-0">#</th>
               <th class="border-0">Imagen</th>
               <th class="border-0">Nombre Producto</th>
-              <th class="border-0">Producto Id</th>
+              <th class="border-0">Categoria</th>
               <th class="border-0">Cantidad en stock</th>
               <th class="border-0">Precio</th>
+              <th class="border-0">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
+            <tr *ngFor="let item of datos">
+              <td>{{item.id}}</td>
               <td>
                 <div class="m-r-10"><img
-                    src="https://cr.epaenlinea.com/pub/media/version20200605/catalog/product/cache/a83b746ef25730b9cb1cc414bac0f04a/3/0/3027010_211.jpg"
+                    src="{{item.imagen}}"
                     alt="user" class="rounded" width="45">
                 </div>
               </td>
-              <td>Cemento Cemex </td>
-              <td>id000001 </td>
-              <td>100</td>
-              <td>₡ 9995</td>
-            </tr>
-            <tr>
-              <td>2</td>
+              <td>{{item.nombre}}</td>
+              <td>{{item.category.nombre}} </td>
+              <td>{{item.cantidad_total}}</td>
+              <td>₡{{item.costo_unidad}}</td>
               <td>
-                <div class="m-r-10"><img
-                    src="https://cr.epaenlinea.com/pub/media/version20200605/catalog/product/cache/f0b46f36c41ddcfe5166fd88e24e9484/1/5/1535052.jpg"
-                    alt="user" class="rounded" width="45">
+                <div class="container">
+                  <a class="btn btn-outline-dark">
+                    <i class="fas fa-eye"></i>
+                  </a>
+                  <hr />
+                  <a class="btn btn-warning" href="">
+                    <i class="far fa-edit"></i>
+                  </a>
                 </div>
               </td>
-              <td>General Electric Barra Led</td>
-              <td>id000002 </td>
-              <td>100</td>
-              <td>₡ 14950</td>
             </tr>
-            <tr>
-              <td>3</td>
-              <td>
-                <div class="m-r-10"><img
-                    src="https://cr.epaenlinea.com/pub/media/version20200605/catalog/product/cache/a83b746ef25730b9cb1cc414bac0f04a/2/2/2246018_7.jpg"
-                    alt="user" class="rounded" width="45">
-                </div>
-              </td>
-              <td>Ceramica </td>
-              <td>id000003 </td>
-              <td>1500</td>
-              <td>₡ 9995</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>
-                <div class="m-r-10"><img
-                    src="https://cr.epaenlinea.com/pub/media/version20200605/catalog/product/cache/a83b746ef25730b9cb1cc414bac0f04a/0/8/0823046_21.jpg"
-                    alt="user" class="rounded" width="45">
-                </div>
-              </td>
-              <td>Avono Terra Nova </td>
-              <td>id000004 </td>
-              <td>350</td>
-              <td>₡ 1500</td>
-            </tr>
-            <tr>
-              <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
-            </tr>
+
           </tbody>
         </table>
       </div>
