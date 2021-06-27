@@ -21,9 +21,9 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     this.notificacion.mensaje(
         'Usuario',
-        'Bienvenido! Listo par un nuevo dia de trabajo',
+        'Bienvenido! Listo para un nuevo dia de trabajo',
         'success'
       );
   }
-  
+
 }

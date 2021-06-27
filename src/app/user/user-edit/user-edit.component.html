@@ -1,27 +1,80 @@
+<br><br><br>
+<div class="container margen">
+<div class="row my-4">
+<div class="col" *ngIf="datos?.id">
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
+<div class="col p-4 d-flex flex-column position-static">
+  <img src={{datos.foto}} alt='foto aparesca' class="img-thumbnail rounded float-left">
+</div>
+<div class="col p-4 d-flex flex-column position-static">
+<h3 class="mb-0 text-primary">{{ datos.name }} {{ datos.primerApellido }} {{ datos.segundoApellido }} </h3>
+<br>
+<p class="card-text"><b>Email: </b>{{ datos.email }}</p>
+<p class="card-text"><b>Identificacion: </b>{{ datos.identificacion }}</p>
+<p class="card-text"><b>Password: </b>{{ datos.password }}</p>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped ">
+        <tr>
+          <th>Estado del Usuario: </th>
+          <th>Rol del Usuario: </th>
+        </tr>
+        <tr>
+          <td>
+            <div [ngSwitch]="datos.estado">
+              <div *ngSwitchCase="0">Deshabilitado</div>
+              <div *ngSwitchCase="1">Habilitado</div>
+              <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
+            </div>
+          </td>
+          <td>
+            <div [ngSwitch]="datos.profile_id">
+              <div *ngSwitchCase="1">Administrador </div>
+              <div *ngSwitchCase="2">Encargardo </div>
+              <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-<BR><BR><BR>
+    <br>
+    <br>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!--
+<br><br><br>
 <div class="container margen">
   <div class="row my-4">
     <div class="col" *ngIf="datos?.id">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
+<div class="col p-4 d-flex flex-column position-static">
+
+
+</div>
+</div>
+</div>
+</div>
+     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
         <div class="col p-4 d-flex flex-column position-static" >
           <img src={{datos.foto}} alt='foto aparesca' class="img-thumbnail rounded float-left">
         </div>
         <div class="col p-4 d-flex flex-column position-static">
-
-<!-- <div type="button" class="btn btn-dark container" style="background-image: url('{{currentUser.user.foto}}');"
-            id="imgProfile" data-bs-toggle="dropdown" aria-expanded="false">
-          </div> -->
-
 <h3 class="mb-0 text-primary">{{ datos.name }} {{ datos.primerApellido }} {{ datos.segundoApellido }} </h3>
-
-
 <br>
           <p class="card-text"><b>Email: </b>{{ datos.email }}</p>
-
           <p class="card-text"><b>Identificacion: </b>{{ datos.identificacion }}</p>
           <p class="card-text"><b>Password: </b>{{ datos.password }}</p>
-
           <br>
 <div class="container">
   <div class="row">
@@ -30,7 +83,6 @@
             <tr>
               <th>Estado del Usuario: </th>
               <th>Rol del Usuario: </th>
-
             </tr>
             <tr>
               <td>
@@ -47,13 +99,13 @@
                   <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
                 </div>
               </td>
-
             </tr>
           </table>
+    </div>
 
-    </div></div></div>
-<br> <br>
+<br>
+<br>
           </div>
           </div>
           </div>
-          </div>
+          </div>-->

@@ -11,7 +11,7 @@ import { UserRequestComponent } from './user-request/user-request.component';
 
 
 @NgModule({
-  declarations: [UserLoginComponent, UserCreateComponent, UserRequestComponent],
+  declarations: [UserLoginComponent, UserCreateComponent,UserEditComponent, UserRequestComponent],
   imports: [CommonModule, ReactiveFormsModule, UserRoutingModule],
 })
 
