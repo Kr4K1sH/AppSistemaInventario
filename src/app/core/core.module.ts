@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { UserModule } from '../user/user.module';
+import { UserLoginComponent } from '../user/user-login/user-login.component';
 
 
 
@@ -14,7 +15,8 @@ import { UserModule } from '../user/user.module';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { UserModule } from '../user/user.module';
   exports: [
     HeaderComponent,
     FooterComponent,
+
   ]
 })
 export class CoreModule { }

@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
     //Subscripción a la información del usuario actual
     this.authService.currentUser.subscribe((x) => (this.currentUser = x));
     //Subscripción al booleano que indica si esta autenticado

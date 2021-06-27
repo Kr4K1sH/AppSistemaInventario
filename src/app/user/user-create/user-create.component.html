@@ -1,4 +1,4 @@
-<p>user-create works!</p>
+<br><br><br><br><br><br>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -73,27 +73,18 @@
         </div>
 <br><br>
 
-<div>
-  <label>Seleccionar foto</label>
-  <input type="file" class="input-file" formControlName="foto" placeholder="Foto"/>
-  <div class="col-sm-4">
-    <small *ngIf="errorHandling('foto', 'required')" class="text-danger">
-      La Foto es requerida
-    </small>
-  </div>
-</div>
 
 
 
 
- <!-- <div class="form-group">
-          <input type="text" class="form-control" placeholder="Foto" formControlName="foto" />
+  <div class="form-group">
+          <input type="text" class="form-control" placeholder="URL Foto" formControlName="foto" />
           <div class="col-sm-4">
             <small *ngIf="errorHandling('foto', 'required')" class="text-danger">
              La foto es requerida
             </small>
           </div>
-        </div> -->
+        </div>
 <br><br>
         <div class="form-group">
           <label for="roles">Rol</label>
@@ -111,7 +102,7 @@
 <br><br>
         <div class="btn-group" role="group">
           <button type="submit" class="btn btn-primary">Registrar</button>
-          <br><br>
+         
           <button type="reset" (click)="onReset()" class="btn btn-secondary">
             Cancelar
           </button>

@@ -16,7 +16,7 @@ export class UserLoginComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private authService: AuthenticationService,
-    private notificacion: NotificacionService,
+ private notificacion: NotificacionService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -35,7 +35,7 @@ export class UserLoginComponent implements OnInit {
     this.mensajes();
   }
 
-  mensajes() {
+ mensajes() {
     let register = false;
     //Obtener parámetros de la URL
     this.route.queryParams.subscribe((params) => {
@@ -62,7 +62,8 @@ export class UserLoginComponent implements OnInit {
     this.authService
       .loginUser(this.formulario.value)
       .subscribe((respuesta: any) => {
-        (this.infoUsuario = respuesta), this.router.navigate(['/']);
+        (this.infoUsuario = respuesta),
+         this.router.navigate(['home/inicio']);
       });
   }
   /* Manejar errores de formulario en Angular */

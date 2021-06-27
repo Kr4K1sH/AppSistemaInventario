@@ -3,3 +3,12 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+
+.test {
+  height: 500px;
+  width: 100%;
+  background-image: url('https://th.bing.com/th/id/Rea71389b2b854533362bdc93f1138ab1?rik=O%2fTGSZn4ULpa7A&riu=http%3a%2f%2ffullhdpictures.com%2fwp-content%2fuploads%2f2016%2f10%2fCaution-Background.jpg&ehk=2j9nkO2zDYP%2fUIo%2bocMZfWYSW4tYQqpEghsaZK00GBU%3d&risl=&pid=ImgRaw');
+  background-position: center;
+  background-repeat: repeat;
+}
