@@ -12,11 +12,12 @@ import { NotificacionService } from 'src/app/share/notification.service';
 export class UserLoginComponent implements OnInit {
   formulario: FormGroup;
   makeSubmit: boolean = false;
+  mensaje: boolean = true;
   infoUsuario: any;
   constructor(
     public fb: FormBuilder,
     private authService: AuthenticationService,
- private notificacion: NotificacionService,
+    private notificacion: NotificacionService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -43,7 +44,7 @@ export class UserLoginComponent implements OnInit {
     });
     if (register) {
       this.notificacion.mensaje(
-        'Usuario',
+        "Bienvenido",
         'Registro satisfactorio! Especifique su credenciales para ingresar',
         'success'
       );
@@ -58,13 +59,18 @@ export class UserLoginComponent implements OnInit {
     if (this.formulario.invalid) {
       return;
     }
-    //console.log(this.formulario.value);
-    this.authService
-      .loginUser(this.formulario.value)
-      .subscribe((respuesta: any) => {
-        (this.infoUsuario = respuesta),
-         this.router.navigate(['home/inicio']);
-      });
+
+
+  //console.log(this.formulario.value);
+      this.authService
+        .loginUser(this.formulario.value)
+        .subscribe((respuesta: any) => {
+          (this.infoUsuario = respuesta),
+          this.router.navigate(['home/inicio']);
+
+        })
+      
+
   }
   /* Manejar errores de formulario en Angular */
 

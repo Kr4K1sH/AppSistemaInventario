@@ -27,7 +27,7 @@
               <td class="border-1">
                 <ul>
                   <li *ngFor="let itemContact of item.contacts">
-                    {{itemContact.nombre}} / {{itemContact.telefono}}
+                    {{itemContact.nombre}} / <p class="text-primary">{{itemContact.telefono}}</p>
                   </li>
                 </ul>
               </td>
