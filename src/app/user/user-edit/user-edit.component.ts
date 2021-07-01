@@ -23,10 +23,10 @@ export class UserEditComponent implements OnInit {
   ngOnInit(): void {
     //Obtener el id del usuario
     let id = +this.route.snapshot.paramMap.get('id');
-    //Obtener el videojuego
-    this.obtenerVideojuego(id);
+    //Obtener el usuario
+    this.obtenerUsuario(id);
   }
-obtenerVideojuego(id: any) {
+obtenerUsuario(id: any) {
     this.gService
       .get('inventory/user', id)
       .pipe(takeUntil(this.destroy$))

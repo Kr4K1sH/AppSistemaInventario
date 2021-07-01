@@ -64,7 +64,14 @@ export class UserLoginComponent implements OnInit {
       .subscribe((respuesta: any) => {
         (this.infoUsuario = respuesta),
          this.router.navigate(['home/inicio']);
-      });
+      this.notificacion.mensaje(
+        'Usuario',
+        'Bienvenido',
+        'success'
+      );
+        });
+
+      
   }
   /* Manejar errores de formulario en Angular */
 

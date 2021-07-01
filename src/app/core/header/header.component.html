@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark navcolor fixed-top"  >
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="home/inicio">
       <i class="fas fa-tools awsomeNav"></i>
-      <span class="awsomeNaveTitle"> WareHouse Tools</span>
+      <span class="awsomeNaveTitle" > WareHouse Tools</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link awsomeNaveTitle" aria-current="page" href="/" *ngIf="isAutenticated">Home</a>
+          <a class="nav-link awsomeNaveTitle" aria-current="page" href="home/inicio" *ngIf="isAutenticated">Home</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -165,7 +165,7 @@
             <li>
               <p class="dropdown-item textLabel">{{currentUser.user.name}} {{currentUser.user.primerApellido}} {{currentUser.user.segundoApellido}}</p>
             </li>
-            <li><a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['user/',currentUser.user.id]" routerLinkActive="active">Editar Perfil</a></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/user',currentUser.user.id]" routerLinkActive="active">Editar Perfil</a></li>
             <li><a class="dropdown-item awsomeNaveSubTitle" routerLink="user/login" routerLinkActive="active"
                 *ngIf="!(isAutenticated)">Login</a></li>
             <li><a class="dropdown-item awsomeNaveSubTitle" (click)="logout()" *ngIf="isAutenticated">Logout </a> </li>
@@ -173,7 +173,7 @@
  </div>
 </div>
 
-      
+
 
 
 
