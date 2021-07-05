@@ -27,7 +27,7 @@ export class UserRequestComponent implements OnInit{
 
   listaUsuarios() {
     this.gService
-      .list('inventory/user/allDisable')
+      .list('inventory/user/requests')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         this.datos = data;

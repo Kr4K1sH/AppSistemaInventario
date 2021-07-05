@@ -8,10 +8,13 @@ import { UserCreateComponent } from './user-create/user-create.component';
 import { InicioComponent } from '../home/inicio/inicio.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserRequestComponent } from './user-request/user-request.component';
+import { UserAllComponent } from './user-all/user-all.component';
+import { UserDisabledComponent } from './user-disabled/user-disabled.component';
+
 
 
 @NgModule({
-  declarations: [UserLoginComponent, UserCreateComponent,UserEditComponent, UserRequestComponent],
+  declarations: [UserLoginComponent, UserCreateComponent,UserEditComponent, UserRequestComponent, UserAllComponent, UserDisabledComponent],
   imports: [CommonModule, ReactiveFormsModule, UserRoutingModule],
 })
 

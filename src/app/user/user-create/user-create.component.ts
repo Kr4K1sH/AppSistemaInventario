@@ -42,7 +42,7 @@ export class UserCreateComponent implements OnInit {
        name: ['', [Validators.required]],
         primerApellido: ['', [Validators.required]],
           segundoApellido: ['', [Validators.required]],
-          estado : ['', [Validators.required]],
+          estado :2 ,
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
 
@@ -55,7 +55,7 @@ export class UserCreateComponent implements OnInit {
   ngOnInit(): void {
     this.mensajes();
   }
-   
+
   submitForm() {
     this.makeSubmit = true;
     this.authService
