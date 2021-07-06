@@ -14,7 +14,11 @@
             </b> {{ datos.category.nombre }}
           </div>
           <p class="card-text"><b>Descripción: </b>{{ datos.descripcion }}</p>
-          <h4>{{ datos.precio | currency: 'USD'}}</h4>
+          <div class="card-text">
+            <b>Precio: <p class="text-success">{{datos.costo_unidad| currency:'CRC':'symbol-narrow'}}</p></b>
+            <b>Peso: </b><p>{{datos.peso}} gramos</p>
+            <b>Color: </b><p>{{datos.color | uppercase}}</p>
+          </div>
           <div class="card-text">
             <b>Proveedores: </b>
             <ul>
@@ -32,7 +36,14 @@
             </ul>
           </div>
           <p class="card-text mb-auto">
-            <b>Registrado por: {{datos.user.name}} {{datos.user.primerApellido}} {{datos.user.segundoApellido}}</b>
+            <b>Almacenado en:</b>
+            {{datos.display.descripcion}}
+          </p>
+          <br/>
+          <hr/>
+          <p class="card-text mb-auto">
+            <b>Registrado por: {{datos.user.name}} {{datos.user.primerApellido}} {{datos.user.segundoApellido}}</b><br>
+            <b>Fecha de Modificación: {{datos.user.updated_at | date}}</b>
           </p>
         </div>
 
@@ -42,7 +53,7 @@
 
   <div class="container text-center">
     <button class="btn btn-secondary">
-      <a class="text-white" href="/">
+      <a class="text-white" href="/home/inicio">
         <i class="fas fa-undo-alt awsomeIcon"></i>
         <label class="awsomeTitle">  Volver</label>
       </a>

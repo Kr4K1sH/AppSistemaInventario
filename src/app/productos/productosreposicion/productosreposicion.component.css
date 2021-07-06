@@ -2,3 +2,13 @@
   color: #B68D40;
   text-align: center;
 }
+
+.alerta{
+  color: #e0421a;
+  font-weight: bolder;
+}
+
+.precio{
+  
+  font-weight: bolder;
+}

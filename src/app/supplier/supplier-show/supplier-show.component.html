@@ -31,7 +31,7 @@
               <td class="border-1">
                 <ul>
                   <li *ngFor="let itemContact of datos.contacts">
-                    {{itemContact.nombre}} / {{itemContact.telefono}}
+                    {{itemContact.nombre}} / <p class="text-primary">{{itemContact.telefono}}</p>
                   </li>
                 </ul>
               </td>
@@ -45,7 +45,7 @@
               <td class="border-1">
                 <ul>
                   <li *ngFor="let itemProducts of datos.products">
-                    {{itemProducts.nombre}} / ${{itemProducts.costo_unidad}}
+                    {{itemProducts.nombre}} / <p class="text-success precio">{{itemProducts.costo_unidad | currency:'CRC':'symbol-narrow'}}</p>
                   </li>
                 </ul>
               </td>
