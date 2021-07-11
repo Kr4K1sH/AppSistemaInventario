@@ -1,0 +1,47 @@
+.titleInventory{
+  color: #B68D40;
+  padding: 1.5em;
+  border-radius: 16px;
+}
+
+.bgcontainer{
+  background-color: #b8b4b473;
+  padding: 1em;
+  border-radius: 16px;
+}
+/*
+.formcontainer{
+  display: flex;
+  text-align: center !important;
+  justify-content: center !important;
+  justify-items: center !important;
+  align-self: center !important;
+  align-items: center !important;
+  place-items: center !important;
+  align-content: center !important;
+  position: relative !important;
+  margin: auto !important;
+  left: 50% !important;
+  right: 50% !important;
+  transform: translate(-50%, -50%) !important;
+
+}*/
+
+.formcontainer form{
+  margin-top: 20px;
+}
+
+.awsomeIcon {
+  font-family: sans-serif;
+  font-size: xx-large;
+}
+
+.awsomeTitle {
+  font-family: sans-serif;
+  font-size: x-large;
+  margin-left: 2px;
+}
+
+.clean{
+  background-color: rgb(148, 187, 219);
+}
