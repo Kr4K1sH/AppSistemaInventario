@@ -30,7 +30,15 @@ this.gService
   this.datos = data;
 });
 }
-
+obtenerUsuario(id: any) {
+    this.gService
+      .get('inventory/user', id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        console.log(data);
+        this.datos = data;
+      });
+  }
 
 ngOnDestroy(){
 this.destroy$.next(true);
