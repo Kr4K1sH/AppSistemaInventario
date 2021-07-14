@@ -10,6 +10,8 @@ const routes: Routes = [
   {path: 'supplier/create', component: SupplierCreateComponent},
   {path: 'supplier/:id', component: SupplierShowComponent},
 
+
+
 ];
 
 @NgModule({
