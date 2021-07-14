@@ -1,4 +1,204 @@
 <br><br><br>
+
+<table class="table table-striped">
+  <tr>
+<td>
+<div class="container bgcontainer">
+  <div class="row my-4">
+    <div class="col" *ngIf="datos?.id">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
+        <div class="col p-4 d-flex flex-column position-static">
+          <img src="{{datos.foto}}" alt="Imagen">
+        </div>
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0 text-primary">{{ datos.name }} {{ datos.primerApellido }} {{ datos.segundoApellido }} </h3>
+          <br>
+          <br>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p class="card-text"><b>Email: </b>{{ datos.email }}</p>
+          <p class="card-text"><b>Identificacion: </b>{{ datos.identificacion }}</p>
+                    <th>Estado del Usuario: </th>
+                      <div [ngSwitch]="datos.estado">
+                        <div *ngSwitchCase="0">Deshabilitado</div>
+                        <div *ngSwitchCase="1">Habilitado</div>
+                        <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
+                      </div>
+                      <br>
+                      
+                    <th>Rol del Usuario: </th>
+                      <div [ngSwitch]="datos.profile_id">
+                        <div *ngSwitchCase="1">Administrador </div>
+                        <div *ngSwitchCase="2">Encargardo </div>
+                        <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
+                      </div>
+              </div>
+
+              <br>
+              <br>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</td>
+<!-- division de tabla-->
+<td>
+<div class="container bgcontainer">
+  <div class="row my-4">
+  <h4 style="font-size:100px; color:#b68d40; margin:10px;" class="bg-light text-center titleInventory">Editar    usuario</h4>
+  <div class="d-flex text-white">
+    <div class="list-group w-100 p-3">
+      <a class="list-group-item list-group-item-action flex-column align-items-start">
+
+        <form [formGroup]="FormCreate" (ngSubmit)="submitForm()" novalidate>
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="identificacion" formControlName="identificacion" />
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('identificacion', 'required')" class="text-danger">
+                La identificacion es requerida
+              </small>
+            </div>
+          </div>
+          <br><br>
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre usuario" formControlName="name" />
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('name', 'required')" class="text-danger">
+                El nombre de usuario es requerido
+              </small>
+            </div>
+          </div>
+
+          <br><br>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="primerApellido" formControlName="primerApellido" />
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('primerApellido', 'required')" class="text-danger">
+                El primer apellido es requerido
+              </small>
+            </div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="segundoApellido" formControlName="segundoApellido" />
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('segundoApellido', 'required')" class="text-danger">
+                El Segundo apellido es requerido
+              </small>
+            </div>
+          </div>
+          <!--<div class="form-group">
+            <label for="roles">Estado</label>
+            <select class="form-select" formControlName="estado">
+              <option value="1">
+                {{'Habilitado'}}
+              </option>
+              <option value="0">
+                {{'Des-Habilitado'}}
+              </option>
+            </select>
+          </div>  -->
+          <br><br>
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="email" formControlName="email" />
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('email', 'required')" class="text-danger">
+                El email es requerido
+              </small>
+            </div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" formControlName="password" />
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('password', 'required')" class="text-danger">
+                El password es requerido
+              </small>
+            </div>
+          </div>
+          <br><br>
+
+
+
+
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="URL Foto" formControlName="foto" />
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('foto', 'required')" class="text-danger">
+                La foto es requerida
+              </small>
+            </div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <label for="roles">Perfil de Usuario</label>
+            <select class="form-select" formControlName="profile_id">
+              <option *ngFor="let perfil of perfiles" [value]="this.perfil.id">
+                {{perfil.descripcion}}
+              </option>
+            </select>
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('profile_id', 'required')" class="text-danger">
+                El rol es requerido
+              </small>
+            </div>
+          </div>
+          <br><br>
+          <div class="btn-group" role="group">
+            <button type="submit" class="btn btn-primary">Salvar cambios </button>
+
+            <button type="reset" (click)="onReset()" class="btn btn-secondary">
+              Cancelar
+            </button>
+          </div>
+          <br><br>
+        </form>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+</div>
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <div class="container margen">
 <div class="row my-4">
 <div class="col" *ngIf="datos?.id">
@@ -50,62 +250,19 @@
 </div>
 </div>
 </div>
-
-
-<!--
-<br><br><br>
-<div class="container margen">
-  <div class="row my-4">
-    <div class="col" *ngIf="datos?.id">
-    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
-<div class="col p-4 d-flex flex-column position-static">
-
+<div class="row my-4">
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="identificacion" formControlName="identificacion" />
+  <div class="col-sm-4">
+    <small *ngIf="errorHandling('identificacion', 'required')" class="text-danger">
+      La identificacion es requerida
+    </small>
+  </div>
+</div>
 
 </div>
-</div>
-</div>
-</div>
-     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
-        <div class="col p-4 d-flex flex-column position-static" >
-          <img src={{datos.foto}} alt='foto aparesca' class="img-thumbnail rounded float-left">
-        </div>
-        <div class="col p-4 d-flex flex-column position-static">
-<h3 class="mb-0 text-primary">{{ datos.name }} {{ datos.primerApellido }} {{ datos.segundoApellido }} </h3>
-<br>
-          <p class="card-text"><b>Email: </b>{{ datos.email }}</p>
-          <p class="card-text"><b>Identificacion: </b>{{ datos.identificacion }}</p>
-          <p class="card-text"><b>Password: </b>{{ datos.password }}</p>
-          <br>
-<div class="container">
-  <div class="row">
-    <div class="col">
-          <table  class="table table-striped ">
-            <tr>
-              <th>Estado del Usuario: </th>
-              <th>Rol del Usuario: </th>
-            </tr>
-            <tr>
-              <td>
-                <div [ngSwitch]="datos.estado">
-                  <div *ngSwitchCase="0">Deshabilitado</div>
-                  <div *ngSwitchCase="1">Habilitado</div>
-                  <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
-                </div>
-              </td>
-              <td>
-                <div [ngSwitch]="datos.profile_id">
-                  <div *ngSwitchCase="1">Administrador </div>
-                  <div *ngSwitchCase="2">Encargardo </div>
-                  <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
-                </div>
-              </td>
-            </tr>
-          </table>
-    </div>
+ -->
 
-<br>
-<br>
-          </div>
-          </div>
-          </div>
-          </div>-->
+
+
+
