@@ -39,14 +39,14 @@ export class UserCreateComponent implements OnInit {
   reactiveForm() {
     this.FormCreate = this.fb.group({
       identificacion: ['', [Validators.required]],
-       name: ['', [Validators.required]],
-        primerApellido: ['', [Validators.required]],
-          segundoApellido: ['', [Validators.required]],
-          estado :2 ,
+      name: ['', [Validators.required]],
+      primerApellido: ['', [Validators.required]],
+      segundoApellido: ['', [Validators.required]],
+      estado :2 ,
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
 
-       foto: ['', [Validators.required]],
+      foto: ['', [Validators.required]],
       profile_id: ['', [Validators.required]],
 
     });

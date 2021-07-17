@@ -100,18 +100,17 @@ export class SupplierCreateComponent implements OnInit {
 
   submitForm() {
     this.makeSubmit = true;
-    console.log(this.FormCreate);
-    let formData = new FormData();
-    formData = this.gService.toFormData(this.FormCreate.value);
-    formData.append('_method', 'POST');
-    this.gService.create_formdata('inventory/supplier', formData)
-    .subscribe((respuesta: any) => {
+
+    if(this.FormCreate.invalid){
+      return;
+    }
+
+    this.gService.create('inventory/supplier', this.FormCreate.value).subscribe((respuesta: any) => {
       this.supplier = respuesta;
-      console.log(respuesta);
       this.router.navigate(['/supplier/all'], {
         queryParams: {register: 'true'},
       });
-    })
+    });
 
   }
 
