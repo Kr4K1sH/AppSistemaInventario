@@ -48,8 +48,8 @@ export class ProductosCreateComponent implements OnInit{
       cantidad_maxima: ['', [Validators.required]],
       cantidad_minima: ['', [Validators.required]],
       cantidad_total: ['', [Validators.required]],
-      costo_unidad: ['', [Validators.required]],
-      peso: ['', [Validators.required]],
+      costo_unidad: ['', [Validators.required], Validators.pattern('[0-9]+')],
+      peso: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       color: ['', [Validators.required]],
       imagen: ['', [Validators.required]],
       suppliers: this.fb.array([]),
@@ -61,6 +61,8 @@ export class ProductosCreateComponent implements OnInit{
 
 
     });
+
+
     this.FormCreate.value.estado = 1;
     this.authService.currentUser.subscribe((x) => (this.currentUser = x));
     this.FormCreate.value.user_id = this.currentUser.user.id;
@@ -144,7 +146,7 @@ export class ProductosCreateComponent implements OnInit{
   private checkboxUbicaciones(){
     this.LocationsList.forEach(() => {
       const control = new FormControl();
-      
+
       (this.FormCreate.controls.locations as FormArray).push(control);
     });
   }

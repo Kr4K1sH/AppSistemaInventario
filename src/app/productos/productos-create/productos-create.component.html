@@ -85,17 +85,17 @@
                 <label for="locations" class="col-sm-4 col-form-label">Ubicaciones </label>
                 <div class="col-sm-8 p-4">
                   <div formArrayName="locations">
-                    <div class="form-check" *ngFor="let l of locations.controls; index as i">
+                      <div class="form-check" *ngFor="let l of locations.controls; index as i">
                       <input type="checkbox" class="form-check-input" [formControlName]="i" [value]="LocationsList[i]?.id"
                         (change)="onCheckChangeUbicaciones(LocationsList[i]?.id, $event)"/>
                       <label class="form-check-label">{{
                         LocationsList[i]?.descripcion
                         }}
                       </label>
-                      <div class="form-group">
-                        <input type="number" class="form-control" formControlName="cantidad" placeholder="Cantidad para" min="1" />
-                      </div>
+                      <div class="form-group row">
 
+                        <input type="number" class="formControl" formControlName="location_id[i][cantidad]" name="location_id[i][cantidad]" placeholder="Cantidad" min="1" />
+                      </div>
                     </div>
                   </div>
 
@@ -236,6 +236,7 @@
             </div>
 
           </div>
+
         </form>
       </div>
 
