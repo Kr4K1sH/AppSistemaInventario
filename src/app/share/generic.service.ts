@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class GenericService {
   // URL del API, definida en enviroments->enviroment.ts
   urlAPI: string = environment.apiURL;
-
+   ServerUrl = environment.apiURL;
   currentUser: any;
 
   //Header para formData
@@ -50,6 +50,8 @@ export class GenericService {
       objUpdate
     );
   }
+
+
 
   //FormData crear
   create_formdata(endopoint: string, objCreate: FormData | any): Observable<any | any[]> {

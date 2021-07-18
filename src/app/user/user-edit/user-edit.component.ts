@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute ,Router} from '@angular/router';
+import {
+  Validators,
+  FormGroup,
+  FormBuilder,
+  FormArray,
+  FormControl,
+} from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GenericService } from 'src/app/share/generic.service';
-import { AuthenticationService } from 'src/app/share/authentication.service';
 import { NotificacionService } from 'src/app/share/notification.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
+import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+
 
 @Component({
   selector: 'app-user-edit',
@@ -15,45 +19,19 @@ import { BrowserModule } from '@angular/platform-browser';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-  //variables create
- [x: string]: any;
   usuario: any;
-  perfiles : any;
- imagenPrevia: any;
-  files: any = []
-  loading: boolean;
-
-  FormCreate: FormGroup;
+  FormUpdate: FormGroup;
   makeSubmit: boolean = false;
-
- //variables edit
-   datos: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
      public fb: FormBuilder,
      private router: Router,
+     private route: ActivatedRoute,
     private gService: GenericService,
-    private authService: AuthenticationService,
-    private route: ActivatedRoute,
     private notificacion: NotificacionService
+
   ) {
-    this.reactiveForm();
-  }
-reactiveForm() {
-    this.FormCreate = this.fb.group({
-      identificacion: ['', [Validators.required]],
-       name: ['', [Validators.required]],
-        primerApellido: ['', [Validators.required]],
-          segundoApellido: ['', [Validators.required]],
-          estado :2 ,
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
 
-       foto: ['', [Validators.required]],
-      profile_id: ['', [Validators.required]],
-
-    });
-    this.getRoles();
   }
   ngOnInit(): void {
     //Obtener el id del usuario
@@ -61,38 +39,55 @@ reactiveForm() {
     //Obtener el usuario
     this.obtenerUsuario(id);
   }
-obtenerUsuario(id: any) {
+  obtenerUsuario(id: any) {
     this.gService
       .get('inventory/user', id)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         console.log(data);
-        this.datos = data;
+       // this.datos = data;
+        this.usuario = data;
+        this.reactiveForm();
       });
-  }
-submitForm() {
-    this.makeSubmit = true;
-    this.authService
-      .createUser(this.FormCreate.value)
-      .subscribe((respuesta: any) => {
-        this.usuario = respuesta;
-        this.router.navigate(['user/login'], {
-          queryParams: { register: 'true' },
-        });
-      });
+
   }
 
-onReset() {
-    this.FormCreate.reset();
+reactiveForm() {
+    this.FormUpdate = this.fb.group({
+      id: [this.usuario.id,[Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      foto: ['', [Validators.required]],
+
+
+    });
+
   }
-  getRoles() {
-    this.gService
-      .list('inventory/profile')
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data: any) => {
-        this.perfiles = data;
+
+submitForm() {
+    this.makeSubmit = true;
+  if(this.FormUpdate.invalid){
+return;
+  }else{
+
+    this.gService.update('inventory/user/update' , this.FormUpdate.value )
+    .subscribe((respuesta: any) => {
+        this.usuario = respuesta;
       });
+       this.FormUpdate.reset();
+       this.obtenerUsuario(this.usuario.id);
+      //this.router.navigate(['user',this.usuario.id], {
+       //   queryParams: { update: 'true' },
+       // });
+
   }
+  }
+
+
+onReset() {
+    this.FormUpdate.reset();
+  }
+
 
 ngOnDestroy() {
     this.destroy$.next(true);
@@ -101,9 +96,9 @@ ngOnDestroy() {
   }
 public errorHandling = (control: string, error: string) => {
     return (
-      this.FormCreate.controls[control].hasError(error) &&
-      this.FormCreate.controls[control].invalid &&
-      (this.makeSubmit || this.FormCreate.controls[control].touched)
+      this.FormUpdate.controls[control].hasError(error) &&
+      this.FormUpdate.controls[control].invalid &&
+      (this.makeSubmit || this.FormUpdate.controls[control].touched)
     );
   };
 }

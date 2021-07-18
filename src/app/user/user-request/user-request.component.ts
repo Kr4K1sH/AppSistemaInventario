@@ -12,6 +12,7 @@ import { GenericService } from 'src/app/share/generic.service';
 
 export class UserRequestComponent implements OnInit{
 
+  
   datos: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
@@ -33,14 +34,11 @@ export class UserRequestComponent implements OnInit{
       });
   }
 
-  obtenerUsuario(id: any) {
-    this.gService
-      .get('inventory/user', id)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data: any) => {
-        console.log(data);
-        this.datos = data;
-      });
+
+
+
+  ShowRequests(id: any) {
+   this.router.navigate(['inventory/user/showSolicitud', id]);
   }
 
   ngOnDestroy() {
