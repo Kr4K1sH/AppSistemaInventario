@@ -1,0 +1,112 @@
+<br>
+<br>
+<br>
+
+<div class="container bgcontainer">
+  <h5 class="bg-dark text-center titleInventory pb-4 titleSupplier">Editar Proveedor</h5>
+  <div class="container">
+    <div class="w-100 p-3">
+      <div class="p-3 formcontainer">
+        <br>
+        <form [formGroup]="FormUpdate" (ngSubmit)="submitForm()" novalidate>
+
+          <!--div center-->
+          <div class="row justify-content-center margen">
+            <!--Formulario información-->
+            <div class="col-md-6">
+              <input type="hidden" formControlName="id" />
+              <div class="form-group row">
+
+                <label class="col-sm-4 col-form-label" for="nombre">Nombre </label>
+                <div class="col-sm-8">
+                  <input type="text" class="formControl" formControlName="nombre" name="nombre"
+                    placeholder="Nombre Proveedor" />
+                </div>
+                <div class="col-auto">
+                  <small *ngIf="errorHandling('nombre', 'required')" class="text-danger">
+                    El nombre del Proveedor es requerido
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+
+                <label class="col-sm-4 col-form-label" for="direccion">Dirección </label>
+                <div class="col-sm-8">
+                  <input type="text" class="formControl" formControlName="direccion" name="direccion"
+                    placeholder="Dirección" />
+                </div>
+
+                <div class="col-sm-4">
+                  <small *ngIf="errorHandling('direccion', 'required')" class="text-danger">
+                    La Dirección del Proveedor es requerido
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="pais" class="col-sm-4 col-form-label">País</label>
+                <div class="col-sm-8">
+                  <select name="pais" formControlName="pais" class="form-select" name="pais">
+                    <option value="" selected disabled>Seleccione un País</option>
+                    <option [value]="item.alpha3Code" *ngFor="let item of countries">
+                      {{item.name}}
+                    </option>
+                  </select>
+                </div>
+                <br>
+
+                <div class="col-sm-4">
+                  <small *ngIf="errorHandling('pais', 'required')" class="text-danger">
+                    Se requiere registrar un pais
+                  </small>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="contacts" class="col-sm-4 col-form-label">Contactos </label>
+                <div class="col-sm-8 p-4">
+                  <!--Array control contacto-->
+                  <div formArrayName="contacts">
+                    <!--Nombre del control con el indice y valor obtenido de la lista de contacto-->
+                    <!--Cada vez que cambia o se selecciona, debe actualizar el array que guarda los id de contacto-->
+                    <div class="form-check" *ngFor="let c of contacts.controls; index as i">
+                      <input type="checkbox" class="form-check-input" [formControlName]="i"
+                        [value]="concactsList[i]?.id" (change)="onCheckChangeContacts(concactsList[i]?.id, $event)" />
+                      <label class="form-check-label">{{
+                        concactsList[i]?.nombre
+                        }}</label>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="row-md-4 m-0">
+                <button type="submit" class="btn btn-success m-1 p-1">
+                  <i class="fas fa-plus awsomeIcon"></i>
+                  <label class="awsomeTitle"> Guardar Registro</label>
+
+                </button>
+                <button type="reset" class="btn m-1 clean text-white" (click)="onReset()">
+                  <i class="fas fa-broom awsomeIcon"></i>
+                  <label class="awsomeTitle"> Limpiar</label>
+
+                </button>
+                <button type="button" class="btn btn-secondary m-1" (click)="onBack()">
+                  <i class="fas fa-undo-alt awsomeIcon"></i>
+                  <label class="awsomeTitle"> Regresar</label>
+
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<br>
+<br>

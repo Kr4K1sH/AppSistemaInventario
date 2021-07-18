@@ -36,6 +36,9 @@
                   <li *ngFor="let itemProducts of item.products">
                     {{itemProducts.nombre}}
                   </li>
+                  <p *ngIf="item.products.length == 0" class="text-danger">
+                    No se han asignado productos
+                  </p>
                 </ul>
               </td>
               <td class="border-1 text-center">
@@ -44,7 +47,7 @@
                     <i class="fas fa-eye"></i>
                   </a>
                   <hr/>
-                  <a class="btn btn-warning" href="">
+                  <a class="btn btn-warning" [routerLink]="['/supplier/update/', item.id]" routerLinkActive="active">
                     <i class="far fa-edit"></i>
                   </a>
                 </div>

@@ -9,11 +9,10 @@ import { ShareModule } from './share/share.module';
 import { HomeModule } from './home/home.module';
 import { UserModule } from './user/user.module';
 import { ProductosModule } from './productos/productos.module';
-import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
 import { SupplierModule } from './supplier/supplier.module';
 import { EntradaModule } from './entrada/entrada.module';
 import { SalidaModule } from './salida/salida.module';
-
+import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent ],

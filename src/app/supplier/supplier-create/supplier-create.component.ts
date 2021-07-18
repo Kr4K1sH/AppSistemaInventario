@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GenericService } from 'src/app/share/generic.service';
-import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { NotificacionService } from 'src/app/share/notification.service';
@@ -17,12 +16,10 @@ export class SupplierCreateComponent implements OnInit {
   supplier: any;
   countries : [];
   concactsList: any;
-  productsList: any;
 
   FormCreate: FormGroup;
   makeSubmit: boolean = false;
   destroy$: Subject<boolean> = new Subject<boolean>();
-
 
   constructor(
     public fb: FormBuilder,
@@ -41,8 +38,7 @@ export class SupplierCreateComponent implements OnInit {
       pais: ['', [Validators.required]],
       contacts: this.fb.array([]),
       contact_id: this.fb.array([]),
-      products: this.fb.array([]),
-      product_id : this.fb.array([]),
+
 
     });
     this.getCountries();
@@ -50,43 +46,6 @@ export class SupplierCreateComponent implements OnInit {
 
   }
   ngOnInit(): void {}
-
-  submitForm() {
-    this.makeSubmit = true;
-    let formData = new FormData();
-    formData = this.gService.toFormData(this.FormCreate.value);
-    formData.append('_method', 'POST');
-    this.gService.create_formdata('supplier', formData)
-    .subscribe((respuesta: any) => {
-      this.supplier = respuesta;
-      this.router.navigate(['/supplier/all'], {
-        queryParams: {register: 'true'},
-      });
-    })
-
-  }
-
-  onBack(){
-    this.router.navigate(['/supplier/all']);
-  }
-
-  onReset() {
-    this.FormCreate.reset();
-  }
-
-  getCountries() {
-
-    fetch('https://restcountries.eu/rest/v2/all')
-    .then(data => {return data.json()})
-    .then(
-      data => {
-        this.countries = data;
-        console.log(this.countries);
-      }
-    )
-
-    return this.countries;
-  }
 
   getContacts() {
      return this.gService.list('inventory/contact').subscribe(
@@ -115,7 +74,7 @@ export class SupplierCreateComponent implements OnInit {
     });
   }
 
-  onCheckChangeContacts(idCheck, event) {
+    onCheckChangeContacts(idCheck, event) {
     /* seleccionado */
     if (event.target.checked) {
       // agregar un nuevo control en el array de controles de los identificadores
@@ -137,6 +96,43 @@ export class SupplierCreateComponent implements OnInit {
         i++;
       });
     }
+  }
+
+  submitForm() {
+    this.makeSubmit = true;
+
+    if(this.FormCreate.invalid){
+      return;
+    }
+
+    this.gService.create('inventory/supplier', this.FormCreate.value).subscribe((respuesta: any) => {
+      this.supplier = respuesta;
+      this.router.navigate(['/supplier/all'], {
+        queryParams: {register: 'true'},
+      });
+    });
+
+  }
+
+  onBack(){
+    this.router.navigate(['/supplier/all']);
+  }
+
+  onReset() {
+    this.FormCreate.reset();
+  }
+
+  getCountries() {
+
+    fetch('https://restcountries.eu/rest/v2/all')
+    .then(data => {return data.json()})
+    .then(
+      data => {
+        this.countries = data;
+      }
+    )
+
+    return this.countries;
   }
 
 

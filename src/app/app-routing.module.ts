@@ -9,8 +9,7 @@ const routes: Routes = [
 
    {path: '', component: UserLoginComponent},
    {path: 'home/inicio', component: InicioComponent},
-    // { path: '', component: InicioComponent, redirectTo:'' , pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent },
+   { path: '**', component: PageNotFoundComponent },
 
 
 ];

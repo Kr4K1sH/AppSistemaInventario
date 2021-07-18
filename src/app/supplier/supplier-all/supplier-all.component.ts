@@ -37,5 +37,11 @@ export class SupplierAllComponent implements OnInit{
     this.destroy$.unsubscribe();
   }
 
+  actualizarProveedor(id: number) {
+    this.router.navigate(['/inventory/supplier/update', id], {
+      relativeTo: this.route,
+    });
+  }
+
 }
 

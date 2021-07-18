@@ -42,7 +42,7 @@
                 <div class="form-group row">
                   <label for="pais" class="col-sm-4 col-form-label">País</label>
                   <div class="col-sm-8">
-                    <select name="pais" formControlName="pais" class="form-control" name="pais">
+                    <select name="pais" formControlName="pais" class="form-select" name="pais">
                       <option value="" selected disabled>Seleccione un País</option>
                       <option [value]="item.alpha3Code" *ngFor="let item of countries">
                         {{item.name}}
