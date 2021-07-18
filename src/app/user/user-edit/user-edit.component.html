@@ -1,4 +1,126 @@
 <br><br><br>
+<ng-template [ngIf]="usuario">
+<form [formGroup]="FormUpdate" (ngSubmit)="submitForm()" novalidate>
+<table class="table table-striped">
+  <tr>
+<td>
+<div class="container bgcontainer">
+  <div class="row my-4">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
+        <div class="col p-4 d-flex flex-column position-static">
+          <img src="{{usuario.foto}}" alt="Imagen">
+        </div>
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0 text-primary">{{ usuario.name }} {{ usuario.primerApellido }} {{ usuario.segundoApellido }} </h3>
+          <br>
+          <br>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p class="card-text"><b>Email: </b>{{ usuario.email }}</p>
+          <p class="card-text"><b>Identificacion: </b>{{ usuario.identificacion }}</p>
+                    <th>Estado del Usuario: </th>
+                      <div [ngSwitch]="usuario.estado">
+                        <div *ngSwitchCase="0">Deshabilitado</div>
+                        <div *ngSwitchCase="1">Habilitado</div>
+                        <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
+                      </div>
+                      <br>
+                    <th>Rol del Usuario: </th>
+                      <div [ngSwitch]="usuario.profile_id">
+                        <div *ngSwitchCase="1">Administrador </div>
+                        <div *ngSwitchCase="2">Encargardo </div>
+                        <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
+                      </div>
+              </div>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</td>
+
+<td>
+<div class="container bgcontainer">
+  <div class="row my-4">
+  <h4 style="font-size:100px; color:#b68d40; margin:10px;" class="bg-light text-center titleInventory">Editar  usuario</h4>
+  <div class="d-flex text-white">
+    <div class="list-group w-100 p-3">
+      <a class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="email" formControlName="email" />
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('email')" class="text-danger">
+                El email es requerido
+              </small>
+            </div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" formControlName="password" />
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('password')" class="text-danger">
+                El password es requerido
+              </small>
+            </div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="URL Foto" formControlName="foto" />
+            <div class="col-sm-4">
+              <small *ngIf="errorHandling('foto')" class="text-danger">
+                La foto es requerida
+              </small>
+            </div>
+          </div>
+          <br><br>
+            <div class="btn-group" role="group">
+            <button type="submit" class="btn btn-primary">Salvar cambios </button>
+            <button type="reset" (click)="onReset()" class="btn btn-secondary">
+              Cancelar
+            </button>
+          </div>
+          <br><br>
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+
+
+</td>
+</tr>
+</table>
+
+</form>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <div class="container margen">
 <div class="row my-4">
 <div class="col" *ngIf="datos?.id">
@@ -50,62 +172,19 @@
 </div>
 </div>
 </div>
-
-
-<!--
-<br><br><br>
-<div class="container margen">
-  <div class="row my-4">
-    <div class="col" *ngIf="datos?.id">
-    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
-<div class="col p-4 d-flex flex-column position-static">
-
+<div class="row my-4">
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="identificacion" formControlName="identificacion" />
+  <div class="col-sm-4">
+    <small *ngIf="errorHandling('identificacion', 'required')" class="text-danger">
+      La identificacion es requerida
+    </small>
+  </div>
+</div>
 
 </div>
-</div>
-</div>
-</div>
-     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
-        <div class="col p-4 d-flex flex-column position-static" >
-          <img src={{datos.foto}} alt='foto aparesca' class="img-thumbnail rounded float-left">
-        </div>
-        <div class="col p-4 d-flex flex-column position-static">
-<h3 class="mb-0 text-primary">{{ datos.name }} {{ datos.primerApellido }} {{ datos.segundoApellido }} </h3>
-<br>
-          <p class="card-text"><b>Email: </b>{{ datos.email }}</p>
-          <p class="card-text"><b>Identificacion: </b>{{ datos.identificacion }}</p>
-          <p class="card-text"><b>Password: </b>{{ datos.password }}</p>
-          <br>
-<div class="container">
-  <div class="row">
-    <div class="col">
-          <table  class="table table-striped ">
-            <tr>
-              <th>Estado del Usuario: </th>
-              <th>Rol del Usuario: </th>
-            </tr>
-            <tr>
-              <td>
-                <div [ngSwitch]="datos.estado">
-                  <div *ngSwitchCase="0">Deshabilitado</div>
-                  <div *ngSwitchCase="1">Habilitado</div>
-                  <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
-                </div>
-              </td>
-              <td>
-                <div [ngSwitch]="datos.profile_id">
-                  <div *ngSwitchCase="1">Administrador </div>
-                  <div *ngSwitchCase="2">Encargardo </div>
-                  <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
-                </div>
-              </td>
-            </tr>
-          </table>
-    </div>
+ -->
 
-<br>
-<br>
-          </div>
-          </div>
-          </div>
-          </div>-->
+
+
+
