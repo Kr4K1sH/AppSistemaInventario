@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { NotificacionService } from 'src/app/share/notification.service';
 import { AuthenticationService } from 'src/app/share/authentication.service';
+import { productLocation } from 'src/app/models/productLocation'
 
 @Component({
   selector: 'app-productos-create',
@@ -18,12 +19,12 @@ export class ProductosCreateComponent implements OnInit{
   products: any;
   SuppliersList: any;
   LocationsList: any;
+  cantidad: number;
 
   categorias: any;
   presentaciones: any;
   currentUser: any;
-  location1: boolean;
-  location2: boolean;
+  public detalles: Array<productLocation>;
 
   FormCreate: FormGroup;
   makeSubmit: boolean = false;
@@ -38,6 +39,7 @@ export class ProductosCreateComponent implements OnInit{
 
   ) {
     this.reactiveForm();
+
   }
 
   reactiveForm() {
@@ -57,7 +59,7 @@ export class ProductosCreateComponent implements OnInit{
       locations: this.fb.array([]),
       location_id: this.fb.array([]),
       display_id: ['', [Validators.required]],
-      cantidad: ['', [Validators.required]]
+      detalles: this.fb.array([])
 
 
     });
@@ -76,6 +78,13 @@ export class ProductosCreateComponent implements OnInit{
   ngOnInit(): void {
 
   }
+
+  setDetalles(location: any){
+    this.detalles = [new productLocation(1, this.cantidad)]
+    this.FormCreate.value.detalles = this.detalles;
+
+  }
+
 
   submitForm() {
     this.makeSubmit = true;
@@ -183,6 +192,7 @@ export class ProductosCreateComponent implements OnInit{
       (this.FormCreate.controls.location_id as FormArray).push(
         new FormControl(event.target.value)
       );
+
     } else {
       /* Deseleccionar*/
       // Buscar el elemento que se le quito la selección
@@ -193,6 +203,7 @@ export class ProductosCreateComponent implements OnInit{
           // Quitar el elemento deseleccionado del array
           (this.FormCreate.controls.location_id as FormArray).removeAt(i);
           return;
+
         }
 
         i++;
@@ -222,6 +233,7 @@ export class ProductosCreateComponent implements OnInit{
 
   onReset() {
     this.FormCreate.reset();
+    this.detalles = [];
 
   }
 
