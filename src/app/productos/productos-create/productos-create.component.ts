@@ -6,7 +6,6 @@ import { takeUntil } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { NotificacionService } from 'src/app/share/notification.service';
 import { AuthenticationService } from 'src/app/share/authentication.service';
-import { productLocation } from 'src/app/models/productLocation'
 
 @Component({
   selector: 'app-productos-create',
@@ -19,12 +18,10 @@ export class ProductosCreateComponent implements OnInit{
   products: any;
   SuppliersList: any;
   LocationsList: any;
-  cantidad: number;
 
   categorias: any;
   presentaciones: any;
   currentUser: any;
-  public detalles: Array<productLocation>;
 
   FormCreate: FormGroup;
   makeSubmit: boolean = false;
@@ -56,50 +53,43 @@ export class ProductosCreateComponent implements OnInit{
       imagen: ['', [Validators.required]],
       suppliers: this.fb.array([]),
       supplier_id: this.fb.array([]),
-      locations: this.fb.array([]),
-      location_id: this.fb.array([]),
       display_id: ['', [Validators.required]],
-      detalles: this.fb.array([])
+      estado: ['', [Validators.required]],
+      user_id: ['', [Validators.required]],
 
 
     });
 
 
-    this.FormCreate.value.estado = 1;
-    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
-    this.FormCreate.value.user_id = this.currentUser.user.id;
     this.getCategorias();
     this.getPresentaciones();
-    this.getLocations();
     this.getProviders();
 
   }
 
-  ngOnInit(): void {
-
-  }
-
-  setDetalles(location: any){
-    this.detalles = [new productLocation(1, this.cantidad)]
-    this.FormCreate.value.detalles = this.detalles;
-
-  }
+  ngOnInit(): void {}
 
 
   submitForm() {
+
+    this.FormCreate.value.estado = 1;
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
+    this.FormCreate.value.user_id = this.currentUser.user.id;
     this.makeSubmit = true;
+
     console.log(this.FormCreate);
-    let formData = new FormData();
-    formData = this.gService.toFormData(this.FormCreate.value);
-    formData.append('_method', 'POST');
-    this.gService.create_formdata('inventory/product', formData)
-    .subscribe((respuesta: any) => {
+
+    if(this.FormCreate.invalid){
+      return;
+    }
+
+    this.gService.create('inventory/product', this.FormCreate.value).subscribe((respuesta: any) => {
       this.products = respuesta;
-      console.log(respuesta);
-      this.router.navigate(['/product/all'], {
+      this.router.navigate(['/producto/all'], {
         queryParams: {register: 'true'},
       });
-    })
+    });
+
 
   }
 
@@ -121,7 +111,7 @@ export class ProductosCreateComponent implements OnInit{
       });
   }
 
-  getLocations(){
+  /*getLocations(){
     return this.gService.list('inventory/location').subscribe(
       (respuesta: any) => {
         (this.LocationsList = respuesta), this.checkboxUbicaciones();
@@ -131,7 +121,7 @@ export class ProductosCreateComponent implements OnInit{
         this.notification.msjValidacion(this.error);
       }
     );
-  }
+  }*/
 
   getProviders(){
     return this.gService.list('inventory/supplier').subscribe(
@@ -152,13 +142,13 @@ export class ProductosCreateComponent implements OnInit{
     });
   }
 
-  private checkboxUbicaciones(){
+  /*private checkboxUbicaciones(){
     this.LocationsList.forEach(() => {
       const control = new FormControl();
 
       (this.FormCreate.controls.locations as FormArray).push(control);
     });
-  }
+  }*/
 
    onCheckChangeProveedores(idCheck, event) {
     /* seleccionado */
@@ -184,8 +174,8 @@ export class ProductosCreateComponent implements OnInit{
     }
   }
 
-   onCheckChangeUbicaciones(idCheck, event) {
-    /* seleccionado */
+   /*onCheckChangeUbicaciones(idCheck, event) {
+
     if (event.target.checked) {
 
       // agregar un nuevo control en el array de controles de los identificadores
@@ -194,8 +184,7 @@ export class ProductosCreateComponent implements OnInit{
       );
 
     } else {
-      /* Deseleccionar*/
-      // Buscar el elemento que se le quito la selección
+
       let i = 0;
 
       this.location_id.controls.forEach((ctrl: FormControl) => {
@@ -209,15 +198,15 @@ export class ProductosCreateComponent implements OnInit{
         i++;
       });
     }
-  }
+  }*/
 
-  get locations(): FormArray{
+  /*get locations(): FormArray{
     return this.FormCreate.get('locations') as FormArray;
   }
 
   get location_id(): FormArray{
     return this.FormCreate.get('location_id') as FormArray;
-  }
+  }*/
 
   get suppliers(): FormArray{
     return this.FormCreate.get('suppliers') as FormArray;
@@ -233,7 +222,6 @@ export class ProductosCreateComponent implements OnInit{
 
   onReset() {
     this.FormCreate.reset();
-    this.detalles = [];
 
   }
 

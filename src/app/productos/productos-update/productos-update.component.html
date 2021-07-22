@@ -1,253 +1,272 @@
-<br>
-<br>
-<br>
-<div class="container bgcontainer">
-  <h5 class="bg-dark text-center titleInventory pb-4">Editar Producto</h5>
-  <div class="container">
-    <div class="w-100 p-3">
-      <div class="p-3 formcontainer">
-        <br>
-        <form [formGroup]="FormUpdate" (ngSubmit)="submitForm()" novalidate>
-          <!--div center-->
-          <div class="row justify-content-center margen">
-            <!--Formulario información-->
-            <div class="col-md-6">
-              <div class="form-group row mb-2">
-                <input type="hidden" formControlName="id" />
+<br><br>
+<div class="container margen" *ngIf="products">
+  <div class="row my-4">
+    <div class="col">
 
-                <label class="col-sm-4 col-form-label" for="nombre">Nombre </label>
-                <div class="col-sm-8">
-                  <input type="text" class="formControl" formControlName="nombre" name="nombre"
-                    placeholder="Nombre Producto" />
-                </div>
-                <div class="col-auto">
-                  <small *ngIf="errorHandling('nombre', 'required')" class="text-danger">
-                    El nombre del Producto es requerido
-                  </small>
-                </div>
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
+          <div class="col p-4 d-flex flex-column position-static">
+            <img src="{{ products.imagen }}" alt="Foto {{ products.nombre}}"
+              class="img-thumbnail rounded float-left" />
+              <br><br>
+              <h3 class="mb-0 titleproduct">{{ products.nombre }}</h3>
+              <div class="mb-1 text-muted">
+                <b>Tipo:
+                </b> {{ products.category.nombre }}
               </div>
-
-              <div class="form-group row mb-2">
-
-                <label class="col-sm-4 col-form-label" for="direccion">Descripción </label>
-                <div class="col-sm-8">
-                  <input type="text" class="formControl" formControlName="descripcion" name="descripcion"
-                    placeholder="Descripción" />
-                </div>
-
-                <div class="col-sm-4">
-                  <small *ngIf="errorHandling('descripcion', 'required')" class="text-danger">
-                    La Descripción es requerida
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group row mb-2">
-                <label for="categorias" class="col-sm-4 col-form-label">Categoría</label>
-                <div class="col-sm-8">
-                  <select formControlName="category_id" class="form-select">
-                    <option value="" selected disabled>Seleccione una Categoría</option>
-                    <option *ngFor="let c of categorias" [value]="c.id">
-                      {{c.nombre}}
-                    </option>
-                  </select>
-                </div>
-                <br>
-
-                <div class="col-sm-4">
-                  <small *ngIf="errorHandling('category_id', 'required')" class="text-danger">
-                    Se requiere registrar una Categoría
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group row mb-2">
-                <label for="display_id" class="col-sm-4 col-form-label">Presentación</label>
-                <div class="col-sm-8">
-                  <select name="display_id" formControlName="display_id" class="form-select" name="display_id">
-                    <option value="" selected disabled>Seleccione una Presentación</option>
-                    <option [value]="" *ngFor="let p of presentaciones">
-                      {{p.descripcion}}
-                    </option>
-                  </select>
-                </div>
-                <br>
-
-                <div class="col-sm-4">
-                  <small *ngIf="errorHandling('category_id', 'required')" class="text-danger">
-                    Se requiere registrar una Presentación
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group row mb-2">
-                <label for="locations" class="col-sm-4 col-form-label">Ubicaciones </label>
-                <div class="col-sm-8 p-4">
-                  <div formArrayName="locations">
-                    <div class="form-check" *ngFor="let l of locations.controls; index as i">
-                      <input type="checkbox" class="form-check-input" [formControlName]="i"
-                        [value]="LocationsList[i]?.id"
-                        (change)="onCheckChangeUbicaciones(LocationsList[i]?.id, $event)" />
-                      <label class="form-check-label">{{
-                        LocationsList[i]?.descripcion
-                        }}
-                      </label>
-
-                    </div>
-
-                  </div>
-                  <div class="form-group row">
-                    <div class="container" *ngFor="let l of locations.controls; index as i">
-                      <input type="number" class="formControl" min="1" [formControlName]="cantidad"
-                        [(ngModel)]="cantidad" />
-                      <button type="button" class="btn btn-primary p-2" (click)="setDetalles(l.id)">
-                        Agregar cantidad
-                      </button>
-                    </div>
-                  </div>
-
-                </div>
+              <p class="card-text"><b>Descripción: </b>{{ products.descripcion }}</p>
+              <div class="card-text">
+                <b>Precio: <p class="text-success">{{products.costo_unidad| currency:'CRC':'symbol-narrow'}}</p></b>
+                <b>Peso: </b>
+                <p>{{products.peso}} gramos</p>
+                <b>Color:</b>
+                <form>
+                  <input type="color" disabled value="{{this.products.color}}" />
+                </form>
 
               </div>
-
-
-              <div class="form-group row mb-2">
-                <label for="suppliers" class="col-sm-4 col-form-label">Proveedores </label>
-                <div class="col-sm-8 p-4">
-
-                  <div formArrayName="suppliers">
-
-                    <div class="form-check" *ngFor="let l of suppliers.controls; index as i">
-                      <input type="checkbox" class="form-check-input" [formControlName]="i"
-                        [value]="SuppliersList[i]?.id"
-                        (change)="onCheckChangeProveedores(SuppliersList[i]?.id, $event)" />
-                      <label class="form-check-label">{{
-                        SuppliersList[i]?.nombre
-                        }}</label>
-                    </div>
-                  </div>
-
-                </div>
+              <div class="card-text">
+                <b>Proveedores: </b>
+                <ul>
+                  <li *ngFor="let item of products.suppliers">
+                    {{item.nombre}}
+                  </li>
+                </ul>
               </div>
 
-              <div class="form-group row mb-2">
-                <label class="col-sm-4 col-form-label" for="cantidad_minima">Cantidad Minima </label>
-                <div class="col-sm-8">
-                  <input type="number" class="formControl" formControlName="cantidad_minima" name="cantidad_minima"
-                    placeholder="Cantida Minima" min="1" />
-                </div>
+              <p class="card-text mb-auto">
+                <b>Almacenado en:</b>
+                {{products.display.descripcion}}
+              </p>
+              <br>
+              <p class="card-text mb-auto">
+                <b>Cantidad Total:</b>
+                {{products.cantidad_total}}
+              </p>
+              <br>
+              <p class="card-text mb-auto">
+                <b>Cantidad Minima:</b>
+                {{products.cantidad_minima}}
+              </p>
+              <br>
+              <p class="card-text mb-auto">
+                <b>Cantidad Maxima:</b>
+                {{products.cantidad_maxima}}
+              </p>
+              <br />
+              <hr />
+              <p class="card-text mb-auto">
+                <b>Registrado por: {{products.user.name}} {{products.user.primerApellido}} {{products.user.segundoApellido}}</b><br>
+                <b>Fecha de Modificación: {{products.user.updated_at | date}}</b>
+              </p>
 
-                <div class="col-sm-4">
-                  <small *ngIf="errorHandling('cantidad_minima', 'required')" class="text-danger">
-                    La Cantidad Minima es requerida
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group row mb-2">
-                <label class="col-sm-4 col-form-label" for="cantidad_maxima">Cantidad Maxima </label>
-                <div class="col-sm-8">
-                  <input type="number" class="formControl" formControlName="cantidad_maxima" name="cantidad_maxima"
-                    placeholder="Cantidad Maxima" min="1" />
-                </div>
-
-                <div class="col-sm-4">
-                  <small *ngIf="errorHandling('cantidad_maxima', 'required')" class="text-danger">
-                    La Cantidad Maxima es requerida
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group row mb-2">
-                <label class="col-sm-4 col-form-label" for="cantidad_total">Cantidad Total </label>
-                <div class="col-sm-8">
-                  <input type="number" class="formControl" formControlName="cantidad_total" name="cantidad_total"
-                    placeholder="Cantidad Total" />
-                </div>
-
-                <div class="col-sm-4">
-                  <small *ngIf="errorHandling('cantidad_total', 'required')" class="text-danger">
-                    La Cantidad Total es requerida
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group row mb-2">
-                <label class="col-sm-4 col-form-label" for="costo_unidad">Costo Unidad </label>
-                <div class="col-sm-8">
-                  <input type="text" class="formControl" formControlName="costo_unidad" name="costo_unidad"
-                    placeholder="Costo Unidad" />
-                </div>
-
-                <div class="col-sm-4">
-                  <small *ngIf="errorHandling('costo_unidad', 'required')" class="text-danger">
-                    El costo es requerido
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group row mb-2">
-                <label class="col-sm-4 col-form-label" for="peso">Peso </label>
-                <div class="col-sm-8">
-                  <input type="text" class="formControl" formControlName="peso" name="peso" placeholder="Peso" />
-                </div>
-
-                <div class="col-sm-4">
-                  <small *ngIf="errorHandling('peso', 'required')" class="text-danger">
-                    El peso es requerido
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group row mb-2">
-                <label class="col-sm-4 col-form-label" for="color">Color </label>
-                <div class="col-sm-8">
-                  <input type="color" class="formControl" formControlName="color" name="color" />
-                </div>
-                <div class="col-sm-4">
-                  <small *ngIf="errorHandling('color', 'required')" class="text-danger">
-                    El Color es requerido
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group row mb-2">
-                <label class="col-sm-4 col-form-label" for="imagen">Foto </label>
-                <div class="col p-4 d-flex flex-column position-static">
-                  <img src="{{products.imagen}}" alt="Imagen">
-                </div>
-
-                <div class="col-sm-4">
-                  <small *ngIf="errorHandling('imagen', 'required')" class="text-danger">
-                    La foto es requerida
-                  </small>
-                </div>
-              </div>
-
-              <div class="row-md-4 m-0">
-                <button type="submit" class="btn btn-success m-1 p-1">
-                  <i class="fas fa-plus awsomeIcon"></i>
-                  <label class="awsomeTitle"> Crear Registro</label>
-
-                </button>
-                <button type="reset" class="btn m-1 clean text-white" (click)="onReset()">
-                  <i class="fas fa-broom awsomeIcon"></i>
-                  <label class="awsomeTitle"> Limpiar</label>
-
-                </button>
-                <button type="button" class="btn btn-secondary m-1" (click)="onBack()">
-                  <i class="fas fa-undo-alt awsomeIcon"></i>
-                  <label class="awsomeTitle"> Regresar</label>
-
-                </button>
-              </div>
             </div>
+          <div class="col p-4 d-flex flex-column position-static">
+            <form [formGroup]="formUpdate" (ngSubmit)="submitForm()" novalidate>
+              <h5 class="bg-dark text-center titleInventory pb-4">Editar Producto</h5>
+              <div class="row justify-content-center margen">
+                <!--Formulario información-->
+                <div class="col-md-6">
+                  <input type="hidden" formControlName="id" />
+                  <div class="form-group row mb-2">
 
+                    <label class="col-sm-4 col-form-label" for="nombre">Nombre </label>
+                    <div class="col-sm-8">
+                      <input type="text" class="formControl" formControlName="nombre" placeholder="Nombre Producto"/>
+                    </div>
+                    <div class="col-auto">
+                      <small *ngIf="errorHandling('nombre', 'required')" class="text-danger">
+                        El nombre del Producto es requerido
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+
+                    <label class="col-sm-4 col-form-label" for="direccion">Descripción </label>
+                    <div class="col-sm-8">
+                      <input type="text" class="formControl" formControlName="descripcion" name="descripcion"
+                        placeholder="Descripción" />
+                    </div>
+
+                    <div class="col-sm-4">
+                      <small *ngIf="errorHandling('descripcion', 'required')" class="text-danger">
+                        La Descripción es requerida
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label for="categorias" class="col-sm-4 col-form-label">Categoría</label>
+                    <div class="col-sm-8">
+                      <select formControlName="category_id" class="form-select">
+                        <option value="" selected disabled>Seleccione una Categoría</option>
+                        <option *ngFor="let c of categorias" [value]="c.id">
+                          {{c.nombre}}
+                        </option>
+                      </select>
+                    </div>
+                    <br>
+
+                    <div class="col-sm-4">
+                      <small *ngIf="errorHandling('category_id', 'required')" class="text-danger">
+                        Se requiere registrar una Categoría
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label for="display_id" class="col-sm-4 col-form-label">Presentación</label>
+                    <div class="col-sm-8">
+                      <select name="display_id" formControlName="display_id" class="form-select" name="display_id">
+                        <option value="" selected disabled>Seleccione una Presentación</option>
+                        <option [value]="this.p.id" *ngFor="let p of presentaciones">
+                          {{p.descripcion}}
+                        </option>
+                      </select>
+                    </div>
+                    <br>
+
+                    <div class="col-sm-4">
+                      <small *ngIf="errorHandling('category_id', 'required')" class="text-danger">
+                        Se requiere registrar una Presentación
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label for="suppliers" class="col-sm-4 col-form-label">Proveedores </label>
+                    <div class="col-sm-8 p-4">
+
+                      <div formArrayName="suppliers">
+                        <div class="form-check" *ngFor="let l of suppliers.controls; index as i">
+                          <input type="checkbox" class="form-check-input" [formControlName]="i" [value]="SuppliersList[i]?.id"
+                            (change)="onCheckChangeProveedores(SuppliersList[i]?.id, $event)" />
+                          <label class="form-check-label">{{
+                            SuppliersList[i]?.nombre
+                            }}</label>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label" for="cantidad_minima">Cantidad Minima </label>
+                    <div class="col-sm-8">
+                      <input type="number" class="formControl" formControlName="cantidad_minima" name="cantidad_minima"
+                        placeholder="Cantida Minima" min="1" />
+                    </div>
+
+                    <div class="col-sm-4">
+                      <small *ngIf="errorHandling('cantidad_minima', 'required')" class="text-danger">
+                        La Cantidad Minima es requerida
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label" for="cantidad_maxima">Cantidad Maxima </label>
+                    <div class="col-sm-8">
+                      <input type="number" class="formControl" formControlName="cantidad_maxima" name="cantidad_maxima"
+                        placeholder="Cantidad Maxima" min="1" />
+                    </div>
+
+                    <div class="col-sm-4">
+                      <small *ngIf="errorHandling('cantidad_maxima', 'required')" class="text-danger">
+                        La Cantidad Maxima es requerida
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label" for="cantidad_total">Cantidad Total </label>
+                    <div class="col-sm-8">
+                      <input type="number" class="formControl" formControlName="cantidad_total" name="cantidad_total"
+                        placeholder="Cantidad Total" />
+                    </div>
+
+                    <div class="col-sm-4">
+                      <small *ngIf="errorHandling('cantidad_total', 'required')" class="text-danger">
+                        La Cantidad Total es requerida
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label" for="costo_unidad">Costo Unidad </label>
+                    <div class="col-sm-8">
+                      <input type="text" class="formControl" formControlName="costo_unidad" name="costo_unidad"
+                        placeholder="Costo Unidad" />
+                    </div>
+
+                    <div class="col-sm-4">
+                      <small *ngIf="errorHandling('costo_unidad', 'required')" class="text-danger">
+                        El costo es requerido
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label" for="peso">Peso </label>
+                    <div class="col-sm-8">
+                      <input type="text" class="formControl" formControlName="peso" name="peso" placeholder="Peso" />
+                    </div>
+
+                    <div class="col-sm-4">
+                      <small *ngIf="errorHandling('peso', 'required')" class="text-danger">
+                        El peso es requerido
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label" for="color">Color </label>
+                    <div class="col-sm-8">
+                      <input type="color" class="formControl" formControlName="color" name="color" />
+                    </div>
+                    <div class="col-sm-4">
+                      <small *ngIf="errorHandling('color', 'required')" class="text-danger">
+                        El Color es requerido
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label" for="imagen">Foto </label>
+                    <div class="col-sm-8">
+                      <input type="url" class="formControl" placeholder="URL Foto" formControlName="imagen" name="imagen" />
+                    </div>
+
+                    <div class="col-sm-4">
+                      <small *ngIf="errorHandling('imagen', 'required')" class="text-danger">
+                        La foto es requerida
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="row-md-4 m-0 text-center">
+                    <br><br>
+                    <button type="submit" class="btn btn-success m-1 p-1" (click)="submitForm()">
+                      <i class="fas fa-plus awsomeIcon"></i>
+                      <label class="awsomeTitle"> Editar Registro</label>
+
+                    </button>
+
+                    <button type="button" class="btn btn-secondary m-1" (click)="onBack()">
+                      <i class="fas fa-undo-alt awsomeIcon"></i>
+                      <label class="awsomeTitle"> Regresar</label>
+
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
+        </div>
+
     </div>
   </div>
+  <br>
+  <br>
 </div>
-<br>
-<br>

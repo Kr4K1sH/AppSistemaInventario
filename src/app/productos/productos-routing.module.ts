@@ -6,7 +6,6 @@ import { ProductosreposicionComponent } from './productosreposicion/productosrep
 import { ProductosCreateComponent } from './productos-create/productos-create.component';
 import { ProductosUpdateComponent } from './productos-update/productos-update.component';
 
-
 const routes: Routes = [
   {path: 'producto/all', component: ProductAllComponent,},
   {path: 'producto/reposicion', component: ProductosreposicionComponent,},

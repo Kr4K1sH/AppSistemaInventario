@@ -37,7 +37,7 @@ export class SupplierUpdateComponent implements OnInit {
     private notification: NotificacionService
 
   ) {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id =+this.route.snapshot.paramMap.get('id');
     this.getSupplier(id);
   }
 

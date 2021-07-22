@@ -67,7 +67,7 @@
                 <div class="col-sm-8">
                   <select name="display_id" formControlName="display_id" class="form-select" name="display_id">
                     <option value="" selected disabled>Seleccione una Presentación</option>
-                    <option [value]="" *ngFor="let p of presentaciones">
+                    <option [value]="this.p.id" *ngFor="let p of presentaciones">
                       {{p.descripcion}}
                     </option>
                   </select>
@@ -80,35 +80,6 @@
                   </small>
                 </div>
               </div>
-
-              <div class="form-group row mb-2">
-                <label for="locations" class="col-sm-4 col-form-label">Ubicaciones </label>
-                <div class="col-sm-8 p-4">
-                  <div formArrayName="locations">
-                      <div class="form-check" *ngFor="let l of locations.controls; index as i">
-                      <input type="checkbox" class="form-check-input" [formControlName]="i" [value]="LocationsList[i]?.id"
-                        (change)="onCheckChangeUbicaciones(LocationsList[i]?.id, $event)"/>
-                      <label class="form-check-label">{{
-                        LocationsList[i]?.descripcion
-                        }}
-                      </label>
-
-                    </div>
-
-                  </div>
-                  <div class="form-group row">
-                    <div class="container" *ngFor="let l of locations.controls; index as i">
-                      <input type="number" class="formControl" min="1" [formControlName]="cantidad" [(ngModel)]="cantidad"/>
-                      <button type="button" class="btn btn-primary p-2" (click)="setDetalles(l.id)">
-                        Agregar cantidad
-                      </button>
-                    </div>
-                  </div>
-
-                  </div>
-
-                </div>
-
 
               <div class="form-group row mb-2">
                 <label for="suppliers" class="col-sm-4 col-form-label">Proveedores </label>

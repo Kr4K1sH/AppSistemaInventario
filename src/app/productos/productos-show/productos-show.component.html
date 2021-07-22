@@ -17,7 +17,11 @@
           <div class="card-text">
             <b>Precio: <p class="text-success">{{datos.costo_unidad| currency:'CRC':'symbol-narrow'}}</p></b>
             <b>Peso: </b><p>{{datos.peso}} gramos</p>
-            <b>Color: </b><p>{{datos.color | uppercase}}</p>
+            <b>Color:</b>
+            <form>
+              <input type="color" class="formControl" formControlName="color" disabled name="color" value="{{this.datos.color}}"/>
+            </form>
+
           </div>
           <div class="card-text">
             <b>Proveedores: </b>

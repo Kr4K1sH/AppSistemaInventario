@@ -23,7 +23,7 @@
             {{item.descripcion}}
           </p>
           <a class="btn btn-sm btn-outline-dark" [routerLink]="['/product/',item.id]" routerLinkActive="active">Detalles</a> |
-          <a class="btn btn-sm btn-warning" href="">Editar</a> |
+          <a class="btn btn-sm btn-warning" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active">Editar</a> |
           <a class="btn btn-sm btn-success" href="">Mover</a>
 
         </div>
