@@ -42,39 +42,42 @@ export class ProductosUbicacionComponent implements OnInit {
   getProduct(id: number){
     this.gService.get('inventory/product', id).subscribe((respuesta: any) => {
       this.products = respuesta;
+      console.log(this.products);
       this.reactiveForm();
     })
 
   }
 
   reactiveForm() {
- this.formUpdate = this.fb.group({
-      id: [this.products.id,[Validators.required]],
-      idsucursal:['',[]],
-      cantidadsucursal:['',[]],
-      idBodega:['',[]],
-      cantidadBodega:['',[]],
-    });
-    }
+    this.formUpdate = this.fb.group({
+          id: [this.products.id,[Validators.required]],
+          idsucursal:['',[]],
+          cantidadsucursal:['',[]],
+          idBodega:['',[]],
+          cantidadBodega:['',[]],
+        });
+
+  }
 
 
   submitForm() {
-this.makeSubmit = true;
-  if(this.formUpdate.invalid){
-return;
-  }else{
+    this.makeSubmit = true;
+      if(this.formUpdate.invalid){
+        return;
+      }
+      else{
 
-    this.gService.update('inventory/product/updateLocation' , this.formUpdate.value )
-    .subscribe((respuesta: any) => {
-        this.products = respuesta;
-      });
-       this.formUpdate.reset();
-       this.getProduct(this.products.id);
-      //this.router.navigate(['user',this.usuario.id], {
-       //   queryParams: { update: 'true' },
-       // });
+        this.gService.update('inventory/product/updateLocation' , this.formUpdate.value )
+        .subscribe((respuesta: any) => {
+            this.products = respuesta;
+          });
+          this.formUpdate.reset();
+          this.getProduct(this.products.id);
+          //this.router.navigate(['user',this.usuario.id], {
+          //   queryParams: { update: 'true' },
+          // });
 
-  }
+      }
   }
 
   ngOnInit(): void {}
@@ -86,10 +89,6 @@ return;
   get supplier_id(): FormArray{
     return this.formUpdate.get('supplier_id') as FormArray;
   }
-
-
-
-
 
   getProviders(){
     return this.gService.list('inventory/supplier').subscribe(

@@ -259,6 +259,12 @@
 
                     </button>
 
+                    <button class="btn btn-primary btn-sm m-1 p-1" [routerLink]="['/producto/ubicacion/', products.id]"
+                      routerLinkActive="active" title="Administrar Ubicaciones">
+                      <i class="fas fa-thumbtack awsomeIcon"></i>
+                      <label class="awsomeTitle"> Ubicaciones</label>
+                    </button>
+
                     <button type="button" class="btn btn-secondary m-1" (click)="onBack()">
                       <i class="fas fa-undo-alt awsomeIcon"></i>
                       <label class="awsomeTitle"> Regresar</label>

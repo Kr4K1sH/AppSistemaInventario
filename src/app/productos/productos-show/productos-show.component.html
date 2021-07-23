@@ -35,7 +35,7 @@
             <b>Ubicaciones: </b>
             <ul>
               <li *ngFor="let item of datos.locations">
-                {{item.descripcion}}
+                {{item.descripcion}} / <p class="text-danger">{{item.pivot.cantidad}}</p>
               </li>
             </ul>
           </div>
