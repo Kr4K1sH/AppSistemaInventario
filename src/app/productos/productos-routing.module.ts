@@ -5,6 +5,7 @@ import { ProductosShowComponent } from './productos-show/productos-show.componen
 import { ProductosreposicionComponent } from './productosreposicion/productosreposicion.component';
 import { ProductosCreateComponent } from './productos-create/productos-create.component';
 import { ProductosUpdateComponent } from './productos-update/productos-update.component';
+import { ProductosUbicacionComponent } from './productos-ubicacion/productos-ubicacion.component';
 
 const routes: Routes = [
   {path: 'producto/all', component: ProductAllComponent,},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'producto/create', component: ProductosCreateComponent,},
   {path: 'product/:id', component: ProductosShowComponent},
   {path: 'producto/update/:id', component: ProductosUpdateComponent,},
+  {path: 'producto/ubicacion/:id', component:ProductosUbicacionComponent},
 ];
 
 @NgModule({
