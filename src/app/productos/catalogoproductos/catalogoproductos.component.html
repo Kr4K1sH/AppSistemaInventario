@@ -10,26 +10,35 @@
   </div>
   <br>
   <br>
+  <ng-template #loading>
+    <div class="loader">Loading...</div>
+  </ng-template>
+  <ng-template [ngIf]="datos" [ngIfElse]="loading">
+    <div class="row flexline">
+      <br> <br>
+      <div class="col-md-4" *ngFor="let item of datos">
+        <div class="card">
+          <img src="{{item.imagen}}" class="card-img-top img-fluid imgCatalog" data-toggle="tooltip" data-placement="bottom"
+            title="{{item.nombre}}" /><br>
+          <div class="card-body text-center">
+            <h3 class="card-title">{{item.nombre}}</h3>
+            <p class="card-text textformat">
+              {{item.descripcion}}
+            </p>
+            <a class="btn btn-sm btn-outline-dark" [routerLink]="['/product/',item.id]" routerLinkActive="active"
+              title="Ver detalles">Detalles</a> |
+            <a class="btn btn-sm btn-warning" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active"
+              title="Actualizar registro">Editar</a> |
+            <a class="btn btn-sm btn-success" title="Movimiento de Producto">Mover</a>
 
-  <div class="row flexline">
-    <br> <br>
-    <div class="col-md-4" *ngFor="let item of datos">
-      <div class="card">
-        <img src="{{item.imagen}}" class="card-img-top img-fluid imgCatalog" data-toggle="tooltip" data-placement="bottom"
-          title="{{item.nombre}}" /><br>
-        <div class="card-body text-center">
-          <h3 class="card-title">{{item.nombre}}</h3>
-          <p class="card-text textformat">
-            {{item.descripcion}}
-          </p>
-          <a class="btn btn-sm btn-outline-dark" [routerLink]="['/product/',item.id]" routerLinkActive="active" title="Ver detalles">Detalles</a> |
-          <a class="btn btn-sm btn-warning" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active" title="Actualizar registro">Editar</a> |
-          <a class="btn btn-sm btn-success" title="Movimiento de Producto">Mover</a>
-
+          </div>
         </div>
+        <br />
+        <br />
       </div>
-      <br />
-      <br />
     </div>
-  </div>
+
+  </ng-template>
+
+
 

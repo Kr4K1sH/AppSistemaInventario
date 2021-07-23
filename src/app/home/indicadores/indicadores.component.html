@@ -1,54 +1,60 @@
 <br><br>
-<div class="container box">
-  <div class="row align-items-center">
-    <div class="col-md-3 col-sm-12 col-12">
-      <div class="card border-3 borderCard">
-        <div class="card-body">
-          <h5 class="text-muted">Cantidad Total de Productos </h5>
-          <div class="metric-value d-inline-block">
-            <h1 class="mb-1 dataNum">
-              {{datos1}}
-            </h1>
-          </div>
-          <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-            <span class="icon-circle-small icon-box-xs text-success bg-success-light">
-              <i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">{{datos1 / 100}}%</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-sm-12 col-12">
-      <div class="card border-3 borderCard">
-        <div class="card-body">
-          <h5 class="text-muted">Cantidad Total de Salidas</h5>
-          <div class="metric-value d-inline-block">
-            <h1 class="mb-1 dataNum">
-              {{datos3}}
-            </h1>
-          </div>
-          <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-            <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i
-                class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">{{datos3 / 100}}%</span>
+<ng-template #loading>
+  <div class="loader">Loading...</div>
+</ng-template>
+<ng-template [ngIf]="datos1" [ngIfElse]="loading">
+  <div class="container box">
+    <div class="row align-items-center">
+      <div class="col-md-3 col-sm-12 col-12">
+        <div class="card border-3 borderCard">
+          <div class="card-body">
+            <h5 class="text-muted">Cantidad Total de Productos </h5>
+            <div class="metric-value d-inline-block">
+              <h1 class="mb-1 dataNum">
+                {{datos1}}
+              </h1>
+            </div>
+            <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+              <span class="icon-circle-small icon-box-xs text-success bg-success-light">
+                <i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">{{datos1 / 100}}%</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-3 col-sm-12 col-12">
-      <div class="card border-3 borderCard">
-        <div class="card-body">
-          <h5 class="text-muted">Cantidad Total de Entradas</h5>
-          <div class="metric-value d-inline-block">
-            <h1 class="mb-1 dataNum">
-              {{datos2}}
-            </h1>
+      <div class="col-md-6 col-sm-12 col-12">
+        <div class="card border-3 borderCard">
+          <div class="card-body">
+            <h5 class="text-muted">Cantidad Total de Salidas</h5>
+            <div class="metric-value d-inline-block">
+              <h1 class="mb-1 dataNum">
+                {{datos3}}
+              </h1>
+            </div>
+            <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+              <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i
+                  class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">{{datos3 / 100}}%</span>
+            </div>
           </div>
-          <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-            <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i
-                class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">{{datos2 / 100}}%</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-12 col-12">
+        <div class="card border-3 borderCard">
+          <div class="card-body">
+            <h5 class="text-muted">Cantidad Total de Entradas</h5>
+            <div class="metric-value d-inline-block">
+              <h1 class="mb-1 dataNum">
+                {{datos2}}
+              </h1>
+            </div>
+            <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+              <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i
+                  class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">{{datos2 / 100}}%</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</ng-template>
+
 <br><br>

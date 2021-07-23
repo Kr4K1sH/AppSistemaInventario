@@ -1,65 +1,70 @@
 <br><br>
-<div class="container margen" *ngIf="products">
-  <div class="row my-4">
-    <div class="col">
+<ng-template #loading>
+  <div class="loader">Loading...</div>
+</ng-template>
+<ng-template [ngIf]="products" [ngIfElse]="loading">
+  <div class="container margen" *ngIf="products">
+
+    <div class="row my-4">
+      <div class="col">
 
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
           <div class="col p-4 d-flex flex-column position-static">
-            <img src="{{ products.imagen }}" alt="Foto {{ products.nombre}}"
-              class="img-thumbnail rounded float-left" />
-              <br><br>
-              <h3 class="mb-0 titleproduct">{{ products.nombre }}</h3>
-              <div class="mb-1 text-muted">
-                <b>Tipo:
-                </b> {{ products.category.nombre }}
-              </div>
-              <p class="card-text"><b>Descripción: </b>{{ products.descripcion }}</p>
-              <div class="card-text">
-                <b>Precio: <p class="text-success">{{products.costo_unidad| currency:'CRC':'symbol-narrow'}}</p></b>
-                <b>Peso: </b>
-                <p>{{products.peso}} gramos</p>
-                <b>Color:</b>
-                <form>
-                  <input type="color" disabled value="{{this.products.color}}" />
-                </form>
-
-              </div>
-              <div class="card-text">
-                <b>Proveedores: </b>
-                <ul>
-                  <li *ngFor="let item of products.suppliers">
-                    {{item.nombre}}
-                  </li>
-                </ul>
-              </div>
-
-              <p class="card-text mb-auto">
-                <b>Almacenado en:</b>
-                {{products.display.descripcion}}
-              </p>
-              <br>
-              <p class="card-text mb-auto">
-                <b>Cantidad Total:</b>
-                {{products.cantidad_total}}
-              </p>
-              <br>
-              <p class="card-text mb-auto">
-                <b>Cantidad Minima:</b>
-                {{products.cantidad_minima}}
-              </p>
-              <br>
-              <p class="card-text mb-auto">
-                <b>Cantidad Maxima:</b>
-                {{products.cantidad_maxima}}
-              </p>
-              <br />
-              <hr />
-              <p class="card-text mb-auto">
-                <b>Registrado por: {{products.user.name}} {{products.user.primerApellido}} {{products.user.segundoApellido}}</b><br>
-                <b>Fecha de Modificación: {{products.user.updated_at | date}}</b>
-              </p>
+            <img src="{{ products.imagen }}" alt="Foto {{ products.nombre}}" class="img-thumbnail rounded float-left" />
+            <br><br>
+            <h3 class="mb-0 titleproduct">{{ products.nombre }}</h3>
+            <div class="mb-1 text-muted">
+              <b>Tipo:
+              </b> {{ products.category.nombre }}
+            </div>
+            <p class="card-text"><b>Descripción: </b>{{ products.descripcion }}</p>
+            <div class="card-text">
+              <b>Precio: <p class="text-success">{{products.costo_unidad| currency:'CRC':'symbol-narrow'}}</p></b>
+              <b>Peso: </b>
+              <p>{{products.peso}} gramos</p>
+              <b>Color:</b>
+              <form>
+                <input type="color" disabled value="{{this.products.color}}" />
+              </form>
 
             </div>
+            <div class="card-text">
+              <b>Proveedores: </b>
+              <ul>
+                <li *ngFor="let item of products.suppliers">
+                  {{item.nombre}}
+                </li>
+              </ul>
+            </div>
+
+            <p class="card-text mb-auto">
+              <b>Almacenado en:</b>
+              {{products.display.descripcion}}
+            </p>
+            <br>
+            <p class="card-text mb-auto">
+              <b>Cantidad Total:</b>
+              {{products.cantidad_total}}
+            </p>
+            <br>
+            <p class="card-text mb-auto">
+              <b>Cantidad Minima:</b>
+              {{products.cantidad_minima}}
+            </p>
+            <br>
+            <p class="card-text mb-auto">
+              <b>Cantidad Maxima:</b>
+              {{products.cantidad_maxima}}
+            </p>
+            <br />
+            <hr />
+            <p class="card-text mb-auto">
+              <b>Registrado por: {{products.user.name}} {{products.user.primerApellido}}
+                {{products.user.segundoApellido}}</b><br>
+              <b>Fecha de Modificación: {{products.user.updated_at | date}}</b>
+            </p>
+
+          </div>
           <div class="col p-4 d-flex flex-column position-static">
             <form [formGroup]="formUpdate" (ngSubmit)="submitForm()" novalidate>
               <h5 class="bg-dark text-center titleInventory pb-4">Editar Producto</h5>
@@ -71,7 +76,7 @@
 
                     <label class="col-sm-4 col-form-label" for="nombre">Nombre </label>
                     <div class="col-sm-8">
-                      <input type="text" class="formControl" formControlName="nombre" placeholder="Nombre Producto"/>
+                      <input type="text" class="formControl" formControlName="nombre" placeholder="Nombre Producto" />
                     </div>
                     <div class="col-auto">
                       <small *ngIf="errorHandling('nombre', 'required')" class="text-danger">
@@ -139,7 +144,8 @@
 
                       <div formArrayName="suppliers">
                         <div class="form-check" *ngFor="let l of suppliers.controls; index as i">
-                          <input type="checkbox" class="form-check-input" [formControlName]="i" [value]="SuppliersList[i]?.id"
+                          <input type="checkbox" class="form-check-input" [formControlName]="i"
+                            [value]="SuppliersList[i]?.id"
                             (change)="onCheckChangeProveedores(SuppliersList[i]?.id, $event)" />
                           <label class="form-check-label">{{
                             SuppliersList[i]?.nombre
@@ -182,7 +188,7 @@
                     <label class="col-sm-4 col-form-label" for="cantidad_total">Cantidad Total </label>
                     <div class="col-sm-8">
                       <input type="number" class="formControl" formControlName="cantidad_total" name="cantidad_total"
-                        placeholder="Cantidad Total" />
+                        placeholder="Cantidad Total" min="1" />
                     </div>
 
                     <div class="col-sm-4">
@@ -234,7 +240,8 @@
                   <div class="form-group row mb-2">
                     <label class="col-sm-4 col-form-label" for="imagen">Foto </label>
                     <div class="col-sm-8">
-                      <input type="url" class="formControl" placeholder="URL Foto" formControlName="imagen" name="imagen" />
+                      <input type="url" class="formControl" placeholder="URL Foto" formControlName="imagen"
+                        name="imagen" />
                     </div>
 
                     <div class="col-sm-4">
@@ -265,8 +272,11 @@
           </div>
         </div>
 
+      </div>
     </div>
+
+    <br>
+    <br>
   </div>
-  <br>
-  <br>
-</div>
+</ng-template>
+

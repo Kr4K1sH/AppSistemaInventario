@@ -1,9 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark navcolor fixed-top"  >
   <div class="container-fluid">
-    <a class="navbar-brand" href="home/inicio">
-      <i class="fas fa-tools awsomeNav"></i>
-      <span class="awsomeNaveTitle" > WareHouse Tools</span>
-    </a>
+    <div [ngSwitch]="isAutenticated">
+      <a class="navbar-brand" *ngSwitchCase="true" [routerLink]="['/home/inicio']" routerLinkActive="active">
+        <i class="fas fa-tools awsomeNav"></i>
+        <span class="awsomeNaveTitle"> WareHouse Tools</span>
+      </a>
+      <a class="navbar-brand" *ngSwitchCase="false" [routerLink]="['/user/login']" routerLinkActive="active">
+        <i class="fas fa-tools awsomeNav"></i>
+        <span class="awsomeNaveTitle"> WareHouse Tools</span>
+      </a>
+      <div *ngSwitchDefault>Oops! ah ocurrido un error! </div>
+    </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

@@ -1,5 +1,8 @@
 <br>
 <br>
+<ng-template #loading>
+  <div class="loader">Loading...</div>
+</ng-template>
 <div class="col-md-13 container">
   <div class="card ">
     <h5 class="card-header bg-dark text-center titleSupplier">Registro de Proveedores</h5>
@@ -17,43 +20,47 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of datos">
-              <td class="border-1">{{item.nombre}}</td>
-              <td class="border-1">
-                <p class="text-left">
-                  {{item.pais}}
-                </p>
-              </td>
-              <td class="border-1">
-                <ul>
-                  <li *ngFor="let itemContact of item.contacts">
-                    {{itemContact.nombre}} / <p class="text-primary">{{itemContact.telefono}}</p>
-                  </li>
-                </ul>
-              </td>
-              <td class="border-1">
-                <ul>
-                  <li *ngFor="let itemProducts of item.products">
-                    {{itemProducts.nombre}}
-                  </li>
-                  <p *ngIf="item.products.length == 0" class="text-danger">
-                    No se han asignado productos
+            <ng-template [ngIf]="datos" [ngIfElse]="loading">
+              <tr *ngFor="let item of datos">
+                <td class="border-1">{{item.nombre}}</td>
+                <td class="border-1">
+                  <p class="text-left">
+                    {{item.pais}}
                   </p>
-                </ul>
-              </td>
-              <td class="border-1 text-center">
-                <div class="container">
-                  <a class="btn btn-outline-dark" [routerLink]="['/supplier/',item.id]" routerLinkActive="active" title="Ver detalles">
-                    <i class="fas fa-eye"></i>
-                  </a>
-                  <hr/>
-                  <a class="btn btn-warning" [routerLink]="['/supplier/update/', item.id]" routerLinkActive="active" title="Actualizar registro">
-                    <i class="far fa-edit"></i>
-                  </a>
-                </div>
+                </td>
+                <td class="border-1">
+                  <ul>
+                    <li *ngFor="let itemContact of item.contacts">
+                      {{itemContact.nombre}} / <p class="text-primary">{{itemContact.telefono}}</p>
+                    </li>
+                  </ul>
+                </td>
+                <td class="border-1">
+                  <ul>
+                    <li *ngFor="let itemProducts of item.products">
+                      {{itemProducts.nombre}}
+                    </li>
+                    <p *ngIf="item.products.length == 0" class="text-danger">
+                      No se han asignado productos
+                    </p>
+                  </ul>
+                </td>
+                <td class="border-1 text-center">
+                  <div class="container">
+                    <a class="btn btn-outline-dark" [routerLink]="['/supplier/',item.id]" routerLinkActive="active"
+                      title="Ver detalles">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <hr />
+                    <a class="btn btn-warning" [routerLink]="['/supplier/update/', item.id]" routerLinkActive="active"
+                      title="Actualizar registro">
+                      <i class="far fa-edit"></i>
+                    </a>
+                  </div>
 
-              </td>
-            </tr>
+                </td>
+              </tr>
+            </ng-template>
 
           </tbody>
         </table>
