@@ -9,6 +9,7 @@ import { ProductAllComponent } from './productos-all/productos-all.component';
 import { ProductosUpdateComponent } from './productos-update/productos-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductosRoutingModule } from './productos-routing.module';
+import { ProductosUbicacionComponent } from './productos-ubicacion/productos-ubicacion.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ProductosRoutingModule } from './productos-routing.module';
     ProductosreposicionComponent,
     ProductosCreateComponent,
     ProductosUpdateComponent,
+    ProductosUbicacionComponent,
   ],
   imports: [
     CommonModule,
