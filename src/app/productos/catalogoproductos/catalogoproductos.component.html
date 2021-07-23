@@ -2,9 +2,9 @@
 <div class="container">
   <div class="flexline text-center">
     <form >
-      <input type="text" class="form-control" width="20px" placeholder="Search">
+      <input type="text" class="form-control text-right" width="25px" placeholder="Buscar">
       <br>
-      <button class="bttn btn-primary">Buscar</button>
+      <button class="bttn btn-primary" title="Buscar Producto">Buscar</button>
     </form>
 
   </div>
@@ -22,9 +22,9 @@
           <p class="card-text textformat">
             {{item.descripcion}}
           </p>
-          <a class="btn btn-sm btn-outline-dark" [routerLink]="['/product/',item.id]" routerLinkActive="active">Detalles</a> |
-          <a class="btn btn-sm btn-warning" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active">Editar</a> |
-          <a class="btn btn-sm btn-success" href="">Mover</a>
+          <a class="btn btn-sm btn-outline-dark" [routerLink]="['/product/',item.id]" routerLinkActive="active" title="Ver detalles">Detalles</a> |
+          <a class="btn btn-sm btn-warning" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active" title="Actualizar registro">Editar</a> |
+          <a class="btn btn-sm btn-success" title="Movimiento de Producto">Mover</a>
 
         </div>
       </div>

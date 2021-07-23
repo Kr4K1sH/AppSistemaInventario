@@ -34,11 +34,15 @@
               <td>
                 <div class="container">
                   <a class="btn btn-outline-dark" [routerLink]="['/product/',item.id]" routerLinkActive="active">
-                    <i class="fas fa-eye"></i>
+                    <i class="fas fa-eye" title="Ver Detalles"></i>
                   </a>
                   <hr />
-                  <a class="btn btn-warning" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active">
+                  <a class="btn btn-warning" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active" title="Actualizar registro">
                     <i class="far fa-edit"></i>
+                  </a>
+                  <hr />
+                  <a class="btn btn-primary" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active" title="Administrar Ubicaciones">
+                    <i class="fas fa-thumbtack"></i>
                   </a>
                 </div>
               </td>

@@ -34,11 +34,11 @@
               <td class="text-success precio">{{item.costo_unidad | currency:'CRC':'symbol-narrow'}}</td>
               <td>
                 <div class="container">
-                  <a class="btn btn-outline-dark" [routerLink]="['/product/',item.id]" routerLinkActive="active">
+                  <a class="btn btn-outline-dark" [routerLink]="['/product/',item.id]" routerLinkActive="active" title="Ver detalles">
                     <i class="fas fa-eye"></i>
                   </a>
                   <hr />
-                  <a class="btn btn-warning" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active">
+                  <a class="btn btn-warning" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active" title="Actualizar registro">
                     <i class="far fa-edit"></i>
                   </a>
                 </div>
