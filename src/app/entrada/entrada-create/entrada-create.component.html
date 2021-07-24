@@ -1,0 +1,110 @@
+<br><br><br>
+<div class="container">
+  <div class="row card">
+    <div class="card-header"><h3>Registro de Entrada de Inventario</h3></div>
+    <div class="card-body">
+      <div class="col-md-6">
+        <div class="d-flex">
+          <div class="container-fluid" *ngIf="isAutenticated">
+            <div type="button" class="btn btn-dark container" style="background-image: url('{{currentUser.user.foto}}');"
+              id="imgProfile" data-bs-toggle="dropdown" aria-expanded="false" title="{{currentUser.user.email}}">
+            </div>
+            <strong>  Registro por:   {{currentUser.user.name}} {{currentUser.user.primerApellido}} {{currentUser.user.segundoApellido}}</strong>
+            <br>
+            <br>
+            <p class="card-text">Fecha:{{fecha | date:'dd/MM/yyyy'}}</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" row card">
+    <div class="card-header">Productos a Mover</div>
+    <div class="card-body">
+      <table class="table table-bordered table-hover" border="2px">
+        <thead class="backtable">
+          <tr>
+            <th>
+              Producto
+            </th>
+            <th class="right">
+              Nombre
+            </th>
+            <th class="right">
+              Movimiento
+            </th>
+            <th class="right">
+              Comentario
+            </th>
+            <th class="right">
+              Cantidad a Mover
+            </th>
+            <th class="right">
+              Proveedores
+            </th>
+            <th>
+              Eliminar
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group" style="cursor: pointer" *ngFor="let item of items; let i = index">
+            <td>
+              <img src="{{item.product.imagen}}" class="p-0 m-0 imgItem"/>
+            </td>
+            <td>
+              <p>{{item.product.nombre}}</p>
+            </td>
+            <td>
+              <select name="movement_id" formControlName="movement_id" class="form-select">
+                <option value="" selected disabled>Seleccione un Movimiento</option>
+                <option [value]="this.p.id" *ngFor="let p of movement">
+                  {{p.descripcion}}
+                </option>
+              </select>
+
+            </td>
+            <td class="right">
+              <!--<textarea id="description" formControlName="description" name="description" type="text" rows="3" minlength="5" maxlength="250" class="form-control mb-2 textarea" placeholder="Comentario"></textarea>-->
+              <input id="description" [(ngModel)]="description" type="text" rows="3" minlength="5"
+                maxlength="250" class="form-control mb-2 textarea" placeholder="Comentario"/>
+            </td>
+            <td class="center">
+              <input id="cantidad" type="number" class="form-control mb-2" [(ngModel)]="item.cantidad" (change)="actualizarCantidad(item)" min="1" placeholder="Cantidad a mover">
+            </td>
+
+            <td class="right">
+              <ul>
+                <li *ngFor="let item of item.product.suppliers">
+                  {{item.nombre}}
+                </li>
+              </ul>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-danger btn-sm" title="Quitar de la lista" (click)="eliminarItem(item)">
+                <i class="fas fa-minus-circle awsomeTitle"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <div class="row clearfix" align="center">
+        <div class="col">
+          <button class="btn btn-success mb-2 float-right" title="Confirmar Registros" (click)="mover()">
+            <i class="far fa-check-circle awsomeIcon"></i>
+            <label class="awsomeTitle">  Finalizar</label>
+
+          </button>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+  </div>
+  <br/><br/><br/>
+</div>
+

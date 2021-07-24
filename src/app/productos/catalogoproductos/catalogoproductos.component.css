@@ -19,3 +19,16 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.titleModal{
+  color: #B68D40;
+}
+
+.btnModal{
+  background-color: #B68D40;
+  color: white;
+}
+
+.modalContentTitle{
+  font-size: large;
+}

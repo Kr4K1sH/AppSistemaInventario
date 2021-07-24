@@ -1,0 +1,56 @@
+#imgProfile {
+  padding: 0%;
+  border-radius: 7em;
+  height: 50px;
+  width: 50px;
+
+  background-image: url("../../resources/IMG_20180330_141818.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 600px) {
+  .menudrop {
+    display: block;
+    align-items: center;
+  }
+
+  #imgProfile {
+    padding: 0%;
+    border-radius: 7em;
+    height: 50px;
+    width: 50px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.backtable{
+  background-color: #b68d40;
+}
+
+.awsomeIcon {
+  font-family: sans-serif;
+  font-size: xx-large;
+}
+
+.awsomeTitle {
+  font-family: sans-serif;
+  font-size: x-large;
+  margin-left: 2px;
+}
+
+.titleHeader{
+  color: rgb(189, 188, 186);
+}
+
+.textarea{
+  resize: none;
+}
+
+.imgItem{
+  border-radius: 4px;
+  height: 75px;
+}

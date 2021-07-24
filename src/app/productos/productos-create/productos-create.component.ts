@@ -111,18 +111,6 @@ export class ProductosCreateComponent implements OnInit{
       });
   }
 
-  /*getLocations(){
-    return this.gService.list('inventory/location').subscribe(
-      (respuesta: any) => {
-        (this.LocationsList = respuesta), this.checkboxUbicaciones();
-      },
-      (error) => {
-        this.error = error;
-        this.notification.msjValidacion(this.error);
-      }
-    );
-  }*/
-
   getProviders(){
     return this.gService.list('inventory/supplier').subscribe(
       (respuesta: any) => {
@@ -174,39 +162,6 @@ export class ProductosCreateComponent implements OnInit{
     }
   }
 
-   /*onCheckChangeUbicaciones(idCheck, event) {
-
-    if (event.target.checked) {
-
-      // agregar un nuevo control en el array de controles de los identificadores
-      (this.FormCreate.controls.location_id as FormArray).push(
-        new FormControl(event.target.value)
-      );
-
-    } else {
-
-      let i = 0;
-
-      this.location_id.controls.forEach((ctrl: FormControl) => {
-        if (idCheck == ctrl.value) {
-          // Quitar el elemento deseleccionado del array
-          (this.FormCreate.controls.location_id as FormArray).removeAt(i);
-          return;
-
-        }
-
-        i++;
-      });
-    }
-  }*/
-
-  /*get locations(): FormArray{
-    return this.FormCreate.get('locations') as FormArray;
-  }
-
-  get location_id(): FormArray{
-    return this.FormCreate.get('location_id') as FormArray;
-  }*/
 
   get suppliers(): FormArray{
     return this.FormCreate.get('suppliers') as FormArray;

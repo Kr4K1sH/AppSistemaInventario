@@ -96,3 +96,9 @@
   }
 }
 
+header a:hover,
+.actived{
+	background: rgb(189, 188, 186);
+  border-radius: 3px;
+}
+

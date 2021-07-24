@@ -29,14 +29,50 @@
               title="Ver detalles">Detalles</a> |
             <a class="btn btn-sm btn-warning" [routerLink]="['/producto/update/', item.id]" routerLinkActive="active"
               title="Actualizar registro">Editar</a> |
-            <a class="btn btn-sm btn-success" title="Movimiento de Producto">Mover</a>
+            <button type="button" class="btn btn-sm btn-success" title="Movimiento de Producto" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="obtenerProducto(item.id)">
+              Mover
+            </button>
 
           </div>
         </div>
         <br />
         <br />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title titleModal" id="exampleModalLabel">Mover Producto a Inventario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row container">
+                  <img src="{{img}}" width="25px" />
+                  <h3 class="text-center">
+                    {{nombre}}
+                  </h3>
+
+                </div>
+                <hr/>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <button class="btn btnModal" type="button" (click)="agregarProductoEntrada(idProducto)">Agregar como Entrada de Inventario</button>
+                  <button class="btn btnModal" type="button" (click)="agregarProductoSalida(idProducto)">Agregar como Salida de Inventario</button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
     </div>
+
+
 
   </ng-template>
 

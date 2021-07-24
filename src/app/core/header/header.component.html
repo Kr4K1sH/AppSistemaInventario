@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark navcolor fixed-top"  >
   <div class="container-fluid">
     <div [ngSwitch]="isAutenticated">
-      <a class="navbar-brand" *ngSwitchCase="true" [routerLink]="['/home/inicio']" routerLinkActive="active">
+      <a class="navbar-brand" *ngSwitchCase="true" href="home/inicio">
         <i class="fas fa-tools awsomeNav"></i>
         <span class="awsomeNaveTitle"> WareHouse Tools</span>
       </a>
-      <a class="navbar-brand" *ngSwitchCase="false" [routerLink]="['/user/login']" routerLinkActive="active">
+      <a class="navbar-brand" *ngSwitchCase="false" [routerLink]="['/user/login']" [routerLinkActive]="'actived'">
         <i class="fas fa-tools awsomeNav"></i>
         <span class="awsomeNaveTitle"> WareHouse Tools</span>
       </a>
@@ -19,44 +19,44 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-
-          <a class="nav-link awsomeNaveTitle" aria-current="page" href="home/inicio" *ngIf="isAutenticated">Home</a>
-
+          <a class="nav-link awsomeNaveTitle" aria-current="page" [routerLink]="['/home/inicio']" [routerLinkActive]="'actived'" *ngIf="isAutenticated">
+            Home
+          </a>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle awsomeNaveTitle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false" *ngIf="isAutenticated">
+          <a class="nav-link dropdown-toggle awsomeNaveTitle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false" *ngIf="isAutenticated" [routerLinkActive]="'actived'">
             Mantenimientos
           </a>
           <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
             <li>
-              <a class="dropdown-item awsomeNaveSubTitle" href="#">
+              <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/supplier/all']" [routerLinkActive]="'actived'">
                 Proveedores &raquo;
               </a>
               <ul class="dropdown-menu dropdown-submenu bg-dark">
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/supplier/create']" routerLinkActive="active">Nuevo Registro</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/supplier/create']" [routerLinkActive]="'actived'">Nuevo Registro</a>
                 </li>
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/supplier/all']" routerLinkActive="active">Ver todos los registros</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/supplier/all']" [routerLinkActive]="'actived'">Ver todos los registros</a>
                 </li>
               </ul>
             </li>
 
             <li>
-              <a class="dropdown-item awsomeNaveSubTitle" href="#">
+              <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/producto/all']" [routerLinkActive]="'actived'">
                 Productos &raquo;
               </a>
               <ul class="dropdown-menu dropdown-submenu bg-dark">
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/producto/create/']" routerLinkActive="active">Nuevo Registro</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/producto/create/']" [routerLinkActive]="'actived'">Nuevo Registro</a>
                 </li>
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/producto/all']" routerLinkActive="active">Ver todos los registros</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/producto/all']" [routerLinkActive]="'actived'">Ver todos los registros</a>
                 </li>
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/producto/reposicion']" routerLinkActive="active">En reposición</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/producto/reposicion']" [routerLinkActive]="'actived'">En reposición</a>
                 </li>
 
               </ul>
@@ -65,48 +65,35 @@
               <hr class="dropdown-divider awsomeNaveTitle">
             </li>
             <li>
-              <a class="dropdown-item awsomeNaveSubTitle" href="#">
+              <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/user']" [routerLinkActive]="'actived'">
               Usuarios &raquo;
             </a>
             <ul class="dropdown-menu dropdown-submenu bg-dark">
-            <li><a class="dropdown-item awsomeNaveSubTitle" routerLink='user/registrar'>Registrar Usuario</a></li>
-            <li><a class="dropdown-item awsomeNaveSubTitle" routerLink='requests'>Ver Solicitudes</a></li>
-            <li><a class="dropdown-item awsomeNaveSubTitle" routerLink='user'>Administrar Usuarios</a></li>
-            <li><a class="dropdown-item awsomeNaveSubTitle" routerLink='allDisable'>Usuarios Deshabilitados</a><li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['user/registrar']" [routerLinkActive]="'actived'">Registrar Usuario</a></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/requests']" [routerLinkActive]="'actived'">Ver Solicitudes</a></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/user']" [routerLinkActive]="'actived'">Administrar Usuarios</a></li>
+            <li><a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/allDisable']" [routerLinkActive]="'actived'">Usuarios Deshabilitados</a><li>
             </ul>
           </li>
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle awsomeNaveTitle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          <a class="nav-link dropdown-toggle awsomeNaveTitle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false" *ngIf="isAutenticated">
             Procesos
           </a>
           <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-            <li>
-              <a class="dropdown-item awsomeNaveSubTitle" href="#">
-                Movimientos &raquo;
-              </a>
-              <ul class="dropdown-menu dropdown-submenu bg-dark">
-                <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
-                </li>
-                <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Ver todos los registros</a>
-                </li>
 
-              </ul>
-            </li>
             <li>
               <a class="dropdown-item awsomeNaveSubTitle" href="#">
                 Entradas &raquo;
               </a>
               <ul class="dropdown-menu dropdown-submenu bg-dark">
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
+                  <a class="dropdown-item awsomeNaveSubTitle"  [routerLink]="['/entrada/create']" [routerLinkActive]="'actived'">Inventario de Entradas</a>
                 </li>
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle"  [routerLink]="['/entrada/all']" routerLinkActive="active">
+                  <a class="dropdown-item awsomeNaveSubTitle"  [routerLink]="['/entrada/all']" [routerLinkActive]="'actived'">
                     Ver todos los registros
                   </a>
                 </li>
@@ -123,10 +110,10 @@
               </a>
               <ul class="dropdown-menu dropdown-submenu bg-dark">
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" href="#">Nuevo Registro</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/salida/create']" [routerLinkActive]="'actived'">Inventario de Salidas</a>
                 </li>
                 <li>
-                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/salida/all']" routerLinkActive="active">Ver todos los registros</a>
+                  <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['/salida/all']" [routerLinkActive]="'actived'">Ver todos los registros</a>
                 </li>
                 <li>
                   <a class="dropdown-item awsomeNaveSubTitle" href="#">Mis registros</a>
@@ -165,13 +152,16 @@
                 id="imgProfile" data-bs-toggle="dropdown" aria-expanded="false">
       </div>
       <ul class="dropdown-menu bg-dark menudrop">
-                  <li>
-                    <p class="dropdown-item textLabel">{{currentUser.user.name}} {{currentUser.user.primerApellido}} {{currentUser.user.segundoApellido}}</p>
-                  </li>
-                  <li><a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['user',currentUser.user.id]" routerLinkActive="active">Editar Perfil</a></li>
-                  <li><a class="dropdown-item awsomeNaveSubTitle" routerLink="user/login" routerLinkActive="active"
-                      *ngIf="!(isAutenticated)">Login</a></li>
-                  <li><a class="dropdown-item awsomeNaveSubTitle" (click)="logout()" *ngIf="isAutenticated">Logout </a> </li>
+        <li>
+          <p class="dropdown-item textLabel">{{currentUser.user.name}} {{currentUser.user.primerApellido}} {{currentUser.user.segundoApellido}}</p>
+        </li>
+        <li>
+          <a class="dropdown-item awsomeNaveSubTitle" [routerLink]="['user',currentUser.user.id]" [routerLinkActive]="'actived'">Editar Perfil</a>
+        </li>
+        <li>
+          <a class="dropdown-item awsomeNaveSubTitle" routerLink="user/login" [routerLinkActive]="'actived'" *ngIf="!(isAutenticated)">Login</a>
+        </li>
+        <li><a class="dropdown-item awsomeNaveSubTitle" (click)="logout()" *ngIf="isAutenticated">Logout </a> </li>
       </ul>
       </div>
     </div>

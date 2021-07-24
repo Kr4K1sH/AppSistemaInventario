@@ -15,8 +15,8 @@ export class HeaderComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private authService: AuthenticationService,
-     private gService: GenericService,
-      private route: ActivatedRoute,
+    private gService: GenericService,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
 
