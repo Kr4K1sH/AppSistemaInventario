@@ -4,6 +4,7 @@ export class ItemCart {
   idItem: number;
   product: any;
   cantidad: number;
+  
 
 }
 @Injectable({

@@ -1,5 +1,6 @@
 <br><br><br>
 <div class="container">
+
   <div class="row card">
     <div class="card-header"><h3>Registro de Entrada de Inventario</h3></div>
     <div class="card-body">
@@ -13,6 +14,56 @@
             <br>
             <br>
             <p class="card-text">Fecha:{{fecha | date:'dd/MM/yyyy'}}</p>
+            <div class="formcontainer">
+              <form [formGroup]="FormCreate" (ngSubmit)="submitForm()" novalidate>
+                <div class="row justify-content-center margen">
+                  <div class="col-md-8">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="nombre">Movimiento </label>
+                      <div class="col-sm-8">
+                        <select formControlName="movement_id" class="form-select">
+                          <option value="" selected disabled>Seleccione un Movimiento</option>
+                          <option *ngFor="let m of movement" [value]="m.id">
+                            {{m.descripcion}}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="col-auto">
+                        <small *ngIf="errorHandling('movement_id', 'required')" class="text-danger">
+                          El Movimiento es requerido
+                        </small>
+                      </div>
+                    </div>
+
+                    <br />
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="nombre">Comentario </label>
+                      <div class="col-sm-8">
+                        <textarea id="description" formControlName="description" name="description" type="text" rows="3"
+                          minlength="5" maxlength="250" class="form-control mb-2 textarea" placeholder="Comentario"></textarea>
+
+                      </div>
+                      <div class="col-auto">
+                        <small *ngIf="errorHandling('description', 'required')" class="text-danger">
+                          El comentario es requerido
+                        </small>
+                      </div>
+                    </div>
+                    <div class="row clearfix" align="center">
+                      <button class="btn btn-success mb-2" title="Confirmar Registros" type="submit">
+                        <i class="far fa-check-circle awsomeIcon"></i>
+                        <label class="awsomeTitle">Registrar Entradas</label>
+
+                      </button>
+                    </div>
+                    <br>
+                    <br>
+
+                  </div>
+                </div>
+              </form>
+
+            </div>
 
           </div>
         </div>
@@ -58,27 +109,21 @@
               <p>{{item.product.nombre}}</p>
             </td>
             <td>
-              <select name="movement_id" formControlName="movement_id" class="form-select">
-                <option value="" selected disabled>Seleccione un Movimiento</option>
-                <option [value]="this.p.id" *ngFor="let p of movement">
-                  {{p.descripcion}}
-                </option>
-              </select>
+
 
             </td>
             <td class="right">
-              <!--<textarea id="description" formControlName="description" name="description" type="text" rows="3" minlength="5" maxlength="250" class="form-control mb-2 textarea" placeholder="Comentario"></textarea>-->
-              <input id="description" [(ngModel)]="description" type="text" rows="3" minlength="5"
-                maxlength="250" class="form-control mb-2 textarea" placeholder="Comentario"/>
+
+
             </td>
             <td class="center">
-              <input id="cantidad" type="number" class="form-control mb-2" [(ngModel)]="item.cantidad" (change)="actualizarCantidad(item)" min="1" placeholder="Cantidad a mover">
+              <input type="number" class="form-control mb-2" [(ngModel)]="item.cantidad" (change)="actualizarCantidad(item)" min="1" placeholder="Cantidad a mover">
             </td>
 
             <td class="right">
               <ul>
-                <li *ngFor="let item of item.product.suppliers">
-                  {{item.nombre}}
+                <li *ngFor="let itemSup of item.product.suppliers">
+                  {{itemSup.nombre}}
                 </li>
               </ul>
             </td>
@@ -92,17 +137,7 @@
       </table>
       <br>
       <br>
-      <div class="row clearfix" align="center">
-        <div class="col">
-          <button class="btn btn-success mb-2 float-right" title="Confirmar Registros" (click)="mover()">
-            <i class="far fa-check-circle awsomeIcon"></i>
-            <label class="awsomeTitle">  Finalizar</label>
 
-          </button>
-        </div>
-      </div>
-      <br>
-      <br>
     </div>
   </div>
   <br/><br/><br/>
