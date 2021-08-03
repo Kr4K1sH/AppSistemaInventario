@@ -21,8 +21,12 @@ export class SalidaCreateComponent implements OnInit{
   items: ItemCart[] = [];
   qtyItems = 0;
   movement: any;
+  inventories: any;
 
+  FormCreate: FormGroup;
+  makeSubmit: boolean = false;
   destroy$: Subject<boolean> = new Subject<boolean>();
+
 
   constructor(
     private authService: AuthenticationService,
@@ -33,7 +37,48 @@ export class SalidaCreateComponent implements OnInit{
     private route: ActivatedRoute,
     private router: Router
   ) {
+    this.reactiveForm();
+
+  }
+
+  reactiveForm() {
+    this.FormCreate = this.fb.group({
+      description: ['', [Validators.required]],
+      movement_id: ['', [Validators.required]],
+      detalles: this.fb.array([]),
+      user_id: [''],
+
+
+    });
+
+
+
     this.getMovement();
+
+  }
+
+  submitForm() {
+
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
+    this.FormCreate.value.user_id = this.currentUser.user.id;
+
+    this.makeSubmit = true;
+
+    if(this.FormCreate.invalid){
+      return;
+    }
+
+      this.gService.create('inventory/salida', this.FormCreate.value).subscribe((respuesta: any) => {
+      this.inventories = respuesta;
+
+        this.mover();
+
+
+          // this.cartService.deleteCart();
+          // this.items = this.cartService.getItems();
+
+    });
+
 
   }
 
@@ -67,10 +112,13 @@ export class SalidaCreateComponent implements OnInit{
     if (this.qtyItems > 0) {
 
       let detalles = {
-        detalles: this.cartService.getItems()
+        detalles: [this.cartService.getItems()]
       };
 
-      this.gService.create('inventory/salida', detalles)
+      this.FormCreate.value.detalles = detalles;
+      console.log(this.FormCreate);
+
+      this.gService.create('inventory/salida', this.FormCreate.value)
         .subscribe((respuesta: any) => {
           this.noti.mensaje(
             'Salida',
@@ -79,6 +127,7 @@ export class SalidaCreateComponent implements OnInit{
           );
           this.cartService.deleteCart();
           this.items = this.cartService.getItems();
+          this.onReset();
         });
     } else {
       this.noti.mensaje('Salida', 'Agregue productos a la lista', 'warning');
@@ -94,10 +143,18 @@ export class SalidaCreateComponent implements OnInit{
       });
   }
 
+  onReset() {
+    this.FormCreate.reset();
 
+  }
 
-
-
+  public errorHandling = (control: string, error: string) => {
+    return (
+      this.FormCreate.controls[control].hasError(error) &&
+      this.FormCreate.controls[control].invalid &&
+      (this.makeSubmit || this.FormCreate.controls[control].touched)
+    );
+  };
 
 
 }

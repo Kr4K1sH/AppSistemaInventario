@@ -46,7 +46,6 @@ export class EntradaCreateComponent implements OnInit{
       description: ['', [Validators.required]],
       movement_id: ['', [Validators.required]],
       detalles: this.fb.array([]),
-
       user_id: [''],
 
 
@@ -75,8 +74,9 @@ export class EntradaCreateComponent implements OnInit{
         this.mover();
 
 
-          // this.cartService.deleteCart();
-          // this.items = this.cartService.getItems();
+          this.cartService.deleteCart();
+          this.items = this.cartService.getItems();
+          this.onReset();
 
     });
 

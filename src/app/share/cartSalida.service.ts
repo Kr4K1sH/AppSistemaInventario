@@ -4,7 +4,7 @@ export class ItemCart {
   idItem: number;
   product: any;
   cantidad: number;
-  
+
 
 }
 @Injectable({
@@ -19,9 +19,14 @@ export class CartSalidaService {
     this.cart = new BehaviorSubject<any>(
       JSON.parse(localStorage.getItem('Salida'))
     );
+
     //Establecer un observable
     this.currentDataCart$ = this.cart.asObservable();
   }
+  setMovimiento(movement_id: number){
+
+  }
+
   addToCart(producto: any) {
     const newItem = new ItemCart();
     //Armar instancia de ItemCart con los valores respectivos del producto
@@ -98,3 +103,4 @@ export class CartSalidaService {
     localStorage.setItem('Salida', JSON.stringify(this.cart.getValue()));
   }
 }
+
