@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {EntradaAllComponent} from './entrada-all/entrada-all.component';
 import { EntradaCreateComponent } from './entrada-create/entrada-create.component';
 import {EntradaRoutingModule} from './entrada-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import {EntradaRoutingModule} from './entrada-routing.module';
   ],
   imports: [
     CommonModule,
-    EntradaRoutingModule
+    EntradaRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
 
 })

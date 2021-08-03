@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {SalidaAllComponent} from './salida-all/salida-all.component';
 import {SalidaRoutingModule} from './salida-routing.module';
 import { SalidaCreateComponent } from './salida-create/salida-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,6 +14,8 @@ import { SalidaCreateComponent } from './salida-create/salida-create.component';
   imports: [
     CommonModule,
     SalidaRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 
 })
