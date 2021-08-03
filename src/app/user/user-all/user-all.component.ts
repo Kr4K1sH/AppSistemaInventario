@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GenericService } from 'src/app/share/generic.service';
@@ -15,13 +16,14 @@ destroy$:Subject<boolean>= new Subject<boolean>();
 
   constructor( private gService:GenericService,
   private notificacion:NotificacionService,
-
+  private route: ActivatedRoute,
     ) {
 
 
   }
 
   ngOnInit(): void {
+
     this.listarUsuarios();
   }
 
@@ -50,5 +52,7 @@ this.destroy$.next(true);
 //Desinscribirse
 this.destroy$.unsubscribe();
 }
+
+
 
 }

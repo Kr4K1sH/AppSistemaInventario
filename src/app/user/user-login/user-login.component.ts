@@ -38,9 +38,11 @@ export class UserLoginComponent implements OnInit {
 
  mensajes() {
     let register = false;
+    let auth = false;
     //Obtener parámetros de la URL
     this.route.queryParams.subscribe((params) => {
       register = params.register || false;
+      auth = params.auth || false;
     });
     if (register) {
       this.notificacion.mensaje(
@@ -49,7 +51,16 @@ export class UserLoginComponent implements OnInit {
         'success'
       );
     }
-  }
+if(auth){
+this.notificacion.mensaje(
+'Usuario',
+'Usuario no autorizado para ingresar al recurso solicitado',
+'warning'
+);
+}
+}
+
+
   onReset() {
     this.formulario.reset();
   }

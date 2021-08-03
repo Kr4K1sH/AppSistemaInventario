@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GenericService } from 'src/app/share/generic.service';
+import { NotificacionService } from 'src/app/share/notification.service';
 
 @Component({
   selector: 'app-user-show-request',
@@ -22,6 +23,7 @@ export class UserShowRequestComponent implements OnInit {
      private router: Router,
      private gService: GenericService,
      private route: ActivatedRoute,
+     private notificacion:NotificacionService,
   ) {
 
   }
@@ -42,11 +44,26 @@ export class UserShowRequestComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mensajes();
      //Obtener el id del usuario
     let id = +this.route.snapshot.paramMap.get('id');
     //Obtener el usuario
     this.ShowSolicitud(id);
   }
+mensajes() {
+    let auth = false;
+    //Obtener parámetros de la URL
+this.route.queryParams.subscribe( (params) => { auth = params.auth || false; } );
+
+
+if(auth){
+this.notificacion.mensaje(
+'Usuario',
+'Usuario no autorizado para ingresar al recurso solicitado',
+'warning'
+);
+}
+}
 
 ShowSolicitud(id: any) {
     this.gService

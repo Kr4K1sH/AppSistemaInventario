@@ -34,10 +34,12 @@ export class UserEditComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.mensajes();
     //Obtener el id del usuario
     let id = +this.route.snapshot.paramMap.get('id');
     //Obtener el usuario
     this.obtenerUsuario(id);
+
   }
   obtenerUsuario(id: any) {
     this.gService
@@ -94,6 +96,22 @@ ngOnDestroy() {
     // Desinscribirse
     this.destroy$.unsubscribe();
   }
+
+  mensajes() {
+    let auth = false;
+    //Obtener parámetros de la URL
+this.route.queryParams.subscribe( (params) => { auth = params.auth || false; } );
+
+
+if(auth){
+this.notificacion.mensaje(
+'Usuario',
+'Usuario no autorizado para ingresar al recurso solicitado',
+'warning'
+);
+}
+}
+
 public errorHandling = (control: string, error: string) => {
     return (
       this.FormUpdate.controls[control].hasError(error) &&
