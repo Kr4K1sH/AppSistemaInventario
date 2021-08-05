@@ -68,19 +68,56 @@ export class EntradaCreateComponent implements OnInit{
       return;
     }
 
-      this.gService.create('inventory/entrada', this.FormCreate.value).subscribe((respuesta: any) => {
-      this.inventories = respuesta;
 
-        this.mover();
+    if (this.qtyItems > 0) {
 
+      let detalles = this.cartService.getItems();
 
+      this.FormCreate.value.detalles = detalles;
+      console.log(this.FormCreate);
+
+      this.gService.create('inventory/entrada', this.FormCreate.value)
+        .subscribe((respuesta: any) => {
+          this.noti.mensaje(
+            'Entrada',
+            'Entrada registrada satisfactoriamente',
+            'sucess'
+          );
           this.cartService.deleteCart();
           this.items = this.cartService.getItems();
           this.onReset();
+        });
+    } else {
+      this.noti.mensaje('Entrada', 'Agregue productos a la lista', 'warning');
+    }
 
-    });
 
+  }
 
+  mover() {
+    if (this.qtyItems > 0) {
+
+      let detalles = {
+        detalles: [this.cartService.getItems()]
+      };
+
+      this.FormCreate.value.detalles = detalles;
+      console.log(this.FormCreate);
+
+      this.gService.create('inventory/entrada', this.FormCreate.value)
+        .subscribe((respuesta: any) => {
+          this.noti.mensaje(
+            'Entrada',
+            'Entrada registrada satisfactoriamente',
+            'sucess'
+          );
+          this.cartService.deleteCart();
+          this.items = this.cartService.getItems();
+          this.onReset();
+        });
+    } else {
+      this.noti.mensaje('Entrada', 'Agregue productos a la lista', 'warning');
+    }
   }
 
   ngOnInit(): void {
@@ -109,31 +146,7 @@ export class EntradaCreateComponent implements OnInit{
   }
 
 
-  mover() {
-    if (this.qtyItems > 0) {
 
-      let detalles = {
-        detalles: [this.cartService.getItems()]
-      };
-
-      this.FormCreate.value.detalles = detalles;
-      console.log(this.FormCreate);
-
-      this.gService.create('inventory/entrada', this.FormCreate.value)
-        .subscribe((respuesta: any) => {
-          this.noti.mensaje(
-            'Entrada',
-            'Entrada registrada satisfactoriamente',
-            'sucess'
-          );
-          this.cartService.deleteCart();
-          this.items = this.cartService.getItems();
-          this.onReset();
-        });
-    } else {
-      this.noti.mensaje('Entrada', 'Agregue productos a la lista', 'warning');
-    }
-  }
 
   getMovement() {
     this.gService
