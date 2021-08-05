@@ -31,7 +31,8 @@ export class UserCreateComponent implements OnInit {
     private router: Router,
     private gService: GenericService,
     private authService: AuthenticationService,
-    private notificacion: NotificacionService
+    private notificacion: NotificacionService,
+    private route: ActivatedRoute,
   ) {
     this.reactiveForm();
   }
@@ -53,7 +54,7 @@ export class UserCreateComponent implements OnInit {
     this.getRoles();
   }
   ngOnInit(): void {
-    this.mensajes();
+
   }
 
   submitForm() {
@@ -78,6 +79,10 @@ export class UserCreateComponent implements OnInit {
         this.perfiles = data;
       });
   }
+
+
+
+
   public errorHandling = (control: string, error: string) => {
     return (
       this.FormCreate.controls[control].hasError(error) &&

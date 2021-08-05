@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GenericService } from 'src/app/share/generic.service';
+import { NotificacionService } from 'src/app/share/notification.service';
 
 @Component({
   selector: 'app-user-request',
@@ -12,19 +13,36 @@ import { GenericService } from 'src/app/share/generic.service';
 
 export class UserRequestComponent implements OnInit{
 
-  
+
   datos: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private gService: GenericService
+    private gService: GenericService,
+    private notificacion:NotificacionService,
   ) {}
 
   ngOnInit(): void {
+    this.mensajes();
     this.listaUsuarios();
+
   }
 
+  mensajes() {
+    let auth = false;
+    //Obtener parámetros de la URL
+this.route.queryParams.subscribe( (params) => { auth = params.auth || false; } );
+
+
+if(auth){
+this.notificacion.mensaje(
+'Usuario',
+'Usuario no autorizado para ingresar al recurso solicitado',
+'warning'
+);
+}
+}
   listaUsuarios() {
     this.gService
       .list('inventory/user/requests')
