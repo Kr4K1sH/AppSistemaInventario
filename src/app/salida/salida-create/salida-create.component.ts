@@ -68,17 +68,27 @@ export class SalidaCreateComponent implements OnInit{
       return;
     }
 
-      this.gService.create('inventory/salida', this.FormCreate.value).subscribe((respuesta: any) => {
-      this.inventories = respuesta;
+    if (this.qtyItems > 0) {
 
-        this.mover();
+      let detalles = this.cartService.getItems();
 
+      this.FormCreate.value.detalles = detalles;
+      console.log(this.FormCreate);
 
-          // this.cartService.deleteCart();
-          // this.items = this.cartService.getItems();
-
-    });
-
+      this.gService.create('inventory/salida', this.FormCreate.value)
+        .subscribe((respuesta: any) => {
+          this.noti.mensaje(
+            'Salida',
+            'Salida registrada satisfactoriamente',
+            'sucess'
+          );
+          this.cartService.deleteCart();
+          this.items = this.cartService.getItems();
+          this.onReset();
+        });
+    } else {
+      this.noti.mensaje('Salida', 'Agregue productos a la lista', 'warning');
+    }
 
   }
 
