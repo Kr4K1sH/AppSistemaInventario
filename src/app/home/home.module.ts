@@ -15,12 +15,15 @@ import { ShareModule } from '../share/share.module';
     AcercaDeComponent,
     IndicadoresComponent,
 
+
+
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     ProductosModule,
-    ShareModule
+    ShareModule,
+
 
   ]
 })

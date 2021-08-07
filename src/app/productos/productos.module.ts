@@ -10,6 +10,8 @@ import { ProductosUpdateComponent } from './productos-update/productos-update.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductosRoutingModule } from './productos-routing.module';
 import { ProductosUbicacionComponent } from './productos-ubicacion/productos-ubicacion.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -21,11 +23,15 @@ import { ProductosUbicacionComponent } from './productos-ubicacion/productos-ubi
     ProductosCreateComponent,
     ProductosUpdateComponent,
     ProductosUbicacionComponent,
+
   ],
   imports: [
     CommonModule,
     ProductosRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+
+
   ],
   exports: [
     ProductosreposicionComponent,

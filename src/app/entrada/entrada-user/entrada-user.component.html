@@ -2,7 +2,7 @@
 <br>
 
 <div class="container bgcontainer">
-  <h5 class="bg-dark text-center titleInventory">Registro de Entradas</h5>
+  <h5 class="bg-dark text-center titleInventory">Registro de Movimientos por {{currentUser.user.name}} {{currentUser.user.primerApellido}}</h5>
   <div class="d-flex text-white" *ngFor="let item of datos">
     <div class="list-group w-100 p-3">
       <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -19,15 +19,14 @@
             </li>
           </ul>
         </small>
-        <br/>
+        <br />
         <small>
           Registro por:
           {{item.user.name}} {{item.user.primerApellido}}
         </small>
       </a>
     </div>
-    
+
   </div>
 
 </div>
-

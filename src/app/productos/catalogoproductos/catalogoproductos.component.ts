@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CartEntradaService } from 'src/app/share/cartEntrada.service';
 import { CartSalidaService } from 'src/app/share/cartSalida.service';
 
+
 @Component({
   selector: 'app-catalogoproductos',
   templateUrl: './catalogoproductos.component.html',
@@ -20,6 +21,8 @@ export class CatalogoproductosComponent implements OnInit {
   img: any;
   nombre: any;
   idProducto: any;
+
+  filterpost = '';
 
   constructor(
     private gService: GenericService,

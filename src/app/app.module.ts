@@ -12,10 +12,12 @@ import { ProductosModule } from './productos/productos.module';
 import { SupplierModule } from './supplier/supplier.module';
 import { EntradaModule } from './entrada/entrada.module';
 import { SalidaModule } from './salida/salida.module';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FormsModule } from '@angular/forms';
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
 
 @NgModule({
-  declarations: [AppComponent ],
+  declarations: [AppComponent, FilterPipe],
   imports: [
     BrowserModule,
     // importar HttpClientModule después BrowserModule.
@@ -33,6 +35,7 @@ import { HttpErrorInterceptorService } from './share/http-error-interceptor.serv
     ProductosModule,
     EntradaModule,
     SalidaModule,
+    FormsModule,
     // al final el gestor de las rutas principal
     AppRoutingModule,
 
