@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from '../share/auth-guard.service';
+import { AuthenticationService } from '../share/authentication.service';
 import { RolGuardService } from '../share/rol-guard.service';
 import { EntradaAllComponent } from './entrada-all/entrada-all.component';
 import { EntradaCreateComponent } from './entrada-create/entrada-create.component';
