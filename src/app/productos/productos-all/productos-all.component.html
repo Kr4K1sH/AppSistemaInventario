@@ -6,7 +6,7 @@
 
 <div class="container p-3 text-center">
 
-  <input type="text" class="form-control" name="searchText" width="25px" placeholder="Buscar" [(ngModel)]="searchText"/>
+  <input type="text" class="form-control" name="searchText" width="25px" placeholder="Buscar" [(ngModel)]="filterTerm"/>
   <br>
   <!-- <button class="bttn btn-primary" title="Buscar Producto">Buscar</button> -->
 
@@ -31,7 +31,7 @@
           </thead>
           <tbody>
             <ng-template [ngIf]="datos" [ngIfElse]="loading">
-              <tr *ngFor="let item of datos |filter:searchText">
+              <tr *ngFor="let item of datos |filter:filterTerm">
                 <td>{{item.id}}</td>
                 <td>
                   <div class="m-r-10"><img src="{{item.imagen}}" alt="{{item.nombre}}" title="{{item.nombre}}" class="rounded"

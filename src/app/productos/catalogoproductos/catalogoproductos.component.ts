@@ -22,7 +22,7 @@ export class CatalogoproductosComponent implements OnInit {
   nombre: any;
   idProducto: any;
 
-  filterpost = '';
+  filterTerm: string;
 
   constructor(
     private gService: GenericService,

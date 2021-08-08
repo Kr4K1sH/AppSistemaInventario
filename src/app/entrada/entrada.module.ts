@@ -5,6 +5,7 @@ import { EntradaCreateComponent } from './entrada-create/entrada-create.componen
 import { EntradaUserComponent } from './entrada-user/entrada-user.component';
 import {EntradaRoutingModule} from './entrada-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     EntradaRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    Ng2SearchPipeModule,
+    FormsModule,
   ],
 
 })

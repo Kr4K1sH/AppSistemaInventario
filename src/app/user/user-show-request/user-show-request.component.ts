@@ -14,6 +14,8 @@ import { NotificacionService } from 'src/app/share/notification.service';
 export class UserShowRequestComponent implements OnInit {
   usuario: any;
   perfiles: any;
+  filterTerm: string;
+  
   destroy$: Subject<boolean> = new Subject<boolean>();
   FormUpdate: FormGroup;
   makeSubmit: boolean = false;

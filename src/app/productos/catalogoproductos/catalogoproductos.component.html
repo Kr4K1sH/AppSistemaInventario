@@ -2,10 +2,8 @@
 <div class="container">
   <div class="flexline text-center">
 
-    <input type="text" class="form-control" name="filterpost" width="25px" placeholder="Buscar"
-      [(ngModel)]="filterpost"/>
+    <input type="text" class="form-control" name="searchText" width="25px" placeholder="Buscar" [(ngModel)]="filterTerm" />
       <br>
-      <!-- <button class="bttn btn-primary" title="Buscar Producto">Buscar</button> -->
 
   </div>
   <br>
@@ -16,7 +14,7 @@
   <ng-template [ngIf]="datos" [ngIfElse]="loading">
     <div class="row flexline">
       <br> <br>
-      <div class="col-md-4" *ngFor="let item of datos">
+      <div class="col-md-4" *ngFor="let item of datos |filter:filterTerm">
       <!-- <div class="col-md-4" *ngFor="let item of datos | filter:filterpost"> -->
         <div class="card">
           <img src="{{item.imagen}}" class="card-img-top img-fluid imgCatalog" data-toggle="tooltip" data-placement="bottom"

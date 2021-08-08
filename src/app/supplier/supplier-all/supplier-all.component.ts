@@ -12,6 +12,8 @@ import { GenericService } from 'src/app/share/generic.service';
 
 export class SupplierAllComponent implements OnInit{
   datos: any;
+  filterTerm: string;
+  
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private router: Router,

@@ -12,6 +12,8 @@ import { GenericService } from 'src/app/share/generic.service';
 export class ProductosreposicionComponent implements OnInit {
 
   datos: any;
+  filterTerm: string;
+  
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private router: Router,
@@ -29,7 +31,7 @@ export class ProductosreposicionComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         this.datos = data;
-        
+
       });
   }
   ngOnDestroy() {

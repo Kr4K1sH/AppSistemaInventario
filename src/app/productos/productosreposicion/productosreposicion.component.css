@@ -9,6 +9,18 @@
 }
 
 .precio{
-  
+
   font-weight: bolder;
+}
+
+.bgcontainer{
+  background-color: #b8b4b473;
+  padding: 1em;
+  border-radius: 16px;
+}
+
+.titleSupplier{
+  color: #B68D40;
+  padding: 1.5em;
+  border-radius: 16px;
 }

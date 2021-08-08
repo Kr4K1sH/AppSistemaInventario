@@ -1,83 +1,12 @@
-<!-- <br>
-<br>
-<ng-template #loading>
-  <div class="loader">Loading...</div>
-</ng-template>
-<div class="col-md-13 container">
-  <div class="card ">
-    <h5 class="card-header bg-dark text-center titleSupplier">Registro de Proveedores</h5>
-    <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table">
-          <thead class="bg-light">
-            <tr class="border-1">
-              <th class="border-1">Nombre</th>
-              <th class="border-1">País</th>
-              <th class="border-1">Contactos</th>
-              <th class="border-1">Productos</th>
-              <th class="border-1">Acciones</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <ng-template [ngIf]="datos" [ngIfElse]="loading">
-              <tr *ngFor="let item of datos">
-                <td class="border-1">{{item.nombre}}</td>
-                <td class="border-1">
-                  <p class="text-left">
-                    {{item.pais}}
-                  </p>
-                </td>
-                <td class="border-1">
-                  <ul>
-                    <li *ngFor="let itemContact of item.contacts">
-                      {{itemContact.nombre}} / <p class="text-primary">{{itemContact.telefono}}</p>
-                    </li>
-                  </ul>
-                </td>
-                <td class="border-1">
-                  <ul>
-                    <li *ngFor="let itemProducts of item.products">
-                      {{itemProducts.nombre}}
-                    </li>
-                    <p *ngIf="item.products.length == 0" class="text-danger">
-                      No se han asignado productos
-                    </p>
-                  </ul>
-                </td>
-                <td class="border-1 text-center">
-                  <div class="container">
-                    <a class="btn btn-outline-dark" [routerLink]="['/supplier/',item.id]" routerLinkActive="active"
-                      title="Ver detalles">
-                      <i class="fas fa-eye"></i>
-                    </a>
-                    <hr />
-                    <a class="btn btn-warning" [routerLink]="['/supplier/update/', item.id]" routerLinkActive="active"
-                      title="Actualizar registro">
-                      <i class="far fa-edit"></i>
-                    </a>
-                  </div>
-
-                </td>
-              </tr>
-            </ng-template>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-<br> <br>
-<p></p>
-<p></p> -->
-
 <br>
 <br>
 
 <div class="container bgcontainer">
+
   <h5 class="bg-dark text-center titleSupplier">Registro de Proveedores</h5>
-  <div class="d-flex text-white" *ngFor="let item of datos">
+  <input type="text" class="form-control" name="searchText" width="25px" placeholder="Buscar" [(ngModel)]="filterTerm" />
+  <br />
+  <div class="d-flex text-white" *ngFor="let item of datos |filter:filterTerm">
     <div class="list-group w-100 p-3">
       <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">

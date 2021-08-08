@@ -7,6 +7,8 @@ import { SupplierCreateComponent } from './supplier-create/supplier-create.compo
 import { SupplierUpdateComponent } from './supplier-update/supplier-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SupplierRoutingModule} from './supplier-routing.module';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { SupplierRoutingModule} from './supplier-routing.module';
     CommonModule,
     SupplierRoutingModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    FormsModule,
 
 
   ],

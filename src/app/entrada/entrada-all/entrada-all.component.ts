@@ -13,6 +13,8 @@ import { GenericService } from 'src/app/share/generic.service';
 export class EntradaAllComponent implements OnInit{
 
   datos: any;
+  filterTerm: string;
+  
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private router: Router,

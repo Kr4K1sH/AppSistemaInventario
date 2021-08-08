@@ -12,9 +12,9 @@ import { NotificacionService } from 'src/app/share/notification.service';
 })
 
 export class UserRequestComponent implements OnInit{
-
-
   datos: any;
+  filterTerm: string;
+
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private router: Router,

@@ -34,6 +34,7 @@ import { HttpErrorInterceptorService } from './share/http-error-interceptor.serv
     ProductosModule,
     EntradaModule,
     SalidaModule,
+
     FormsModule,
     // al final el gestor de las rutas principal
     AppRoutingModule,

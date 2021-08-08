@@ -3,6 +3,9 @@
 
 <div class="col-md-13 container">
   <h5 class="card-header bg-dark text-center titleSupplier" style="color: #b68d40;">Solicitudes de Usuarios</h5>
+  <input type="text" class="form-control m-3" name="searchText" width="25px" placeholder="Buscar"
+    [(ngModel)]="filterTerm" />
+  <br />
   <div class="card ">
     <div class="card-body p-0">
       <div class="table-responsive">
@@ -17,7 +20,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of datos">
+            <tr *ngFor="let item of datos |filter:filterTerm">
               <td class="border-1">{{item.name}}</td>
 
               <td class="border-1">

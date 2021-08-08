@@ -10,6 +10,7 @@ import { ProductosUpdateComponent } from './productos-update/productos-update.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductosRoutingModule } from './productos-routing.module';
 import { ProductosUbicacionComponent } from './productos-ubicacion/productos-ubicacion.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 
 
@@ -30,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ProductosRoutingModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule,
     FormsModule,
 
 

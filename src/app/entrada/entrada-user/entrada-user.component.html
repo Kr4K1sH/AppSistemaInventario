@@ -7,7 +7,9 @@
   <div class="container bgcontainer">
     <h5 class="bg-dark text-center titleInventory">Registro de Movimientos por {{currentUser.user.name}}
       {{currentUser.user.primerApellido}}</h5>
-    <div class="d-flex text-white" *ngFor="let item of datos">
+      <input type="text" class="form-control" name="searchText" width="25px" placeholder="Buscar" [(ngModel)]="filterTerm" />
+      <br />
+    <div class="d-flex text-white" *ngFor="let item of datos |filter:filterTerm">
       <div class="list-group w-100 p-3">
         <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">

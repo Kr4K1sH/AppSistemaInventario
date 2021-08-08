@@ -14,6 +14,8 @@ import { AuthenticationService } from 'src/app/share/authentication.service';
 export class EntradaUserComponent implements OnInit{
 
   datos: any;
+  filterTerm: string;
+  
   currentUser: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(

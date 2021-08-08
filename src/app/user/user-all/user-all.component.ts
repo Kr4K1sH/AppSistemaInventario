@@ -12,6 +12,8 @@ import { NotificacionService } from 'src/app/share/notification.service';
 })
 export class UserAllComponent implements OnInit {
 datos : any;
+filterTerm: string;
+
 destroy$:Subject<boolean>= new Subject<boolean>();
 
   constructor( private gService:GenericService,

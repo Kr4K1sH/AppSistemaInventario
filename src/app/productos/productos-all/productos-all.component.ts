@@ -13,7 +13,7 @@ import { GenericService } from 'src/app/share/generic.service';
 export class ProductAllComponent implements OnInit{
 
   datos: any;
-  searchText = '';
+  filterTerm: string;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
