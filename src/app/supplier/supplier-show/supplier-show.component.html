@@ -1,82 +1,85 @@
 <br>
 <br>
-<div class="col-md-13 container" style="color: #B68D40">
-  <div class="card ">
-    <h5 class="card-header bg-dark text-center" style="color: #B68D40">{{datos.nombre}}</h5>
-    <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table">
-          <thead class="bg-light">
-            <tr class="border-1">
+<ng-template #loading>
+  <div class="loader">Loading...</div>
+</ng-template>
+<ng-template [ngIf]="datos" [ngIfElse]="loading">
+  <div class="col-md-13 container" style="color: #B68D40">
+    <div class="card ">
+      <h5 class="card-header bg-dark text-center" style="color: #B68D40">{{datos.nombre}}</h5>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="bg-light">
+              <tr class="border-1">
 
-              <th class="border-1">Dirección</th>
-              <th class="border-1">País</th>
-              <th class="border-1">Contactos</th>
-              <th class="border-1">Correos</th>
-              <th class="border-1">Productos</th>
-              <th class="border-1">Acciones</th>
+                <th class="border-1">Dirección</th>
+                <th class="border-1">País</th>
+                <th class="border-1">Contactos</th>
+                <th class="border-1">Productos</th>
+                <th class="border-1">Acciones</th>
 
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="border-1">
-                {{datos.direccion}}
-              </td>
-              <td class="border-1">
-                <p class="text-left">
-                  {{datos.pais}}
-                </p>
-              </td>
-              <td class="border-1">
-                <ul>
-                  <li *ngFor="let itemContact of datos.contacts">
-                    {{itemContact.nombre}} / <p class="text-primary">{{itemContact.telefono}}</p>
-                  </li>
-                </ul>
-              </td>
-              <td class="border-1">
-                <ul>
-                  <li *ngFor="let itemContact of datos.contacts">
-                    {{itemContact.correo}}
-                  </li>
-                </ul>
-              </td>
-              <td class="border-1">
-                <ul>
-                  <li *ngFor="let itemProducts of datos.products">
-                    {{itemProducts.nombre}} / <p class="text-success precio">{{itemProducts.costo_unidad | currency:'CRC':'symbol-narrow'}}</p>
-                  </li>
-                </ul>
-              </td>
-              <td class="border-1 text-center">
-                <div class="container">
-                  <a class="btn btn-warning" [routerLink]="['/supplier/update/', datos.id]" routerLinkActive="active" title="Actualizar registro">
-                    <i class="far fa-edit"></i>
-                  </a>
-                </div>
-              </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-1">
+                  {{datos.direccion}}
+                </td>
+                <td class="border-1">
+                  <p class="text-left">
+                    {{datos.pais}}
+                  </p>
+                </td>
+                <td class="border-1">
+                  <ul>
+                    <li *ngFor="let itemContact of datos.contacts">
+                      {{itemContact.nombre}} / <p class="text-primary">{{itemContact.telefono}}</p>
+                      {{itemContact.correo}}
+                    </li>
+                  </ul>
+                </td>
 
-            </tr>
+                <td class="border-1">
+                  <ul>
+                    <li *ngFor="let itemProducts of datos.products">
+                      {{itemProducts.nombre}} / <p class="text-success precio">{{itemProducts.costo_unidad |
+                        currency:'CRC':'symbol-narrow'}}</p>
+                      Cantidad: <p>{{itemProducts.cantidad_total}}</p>
+                    </li>
+                  </ul>
+                </td>
+                <td class="border-1 text-center">
+                  <div class="container">
+                    <a class="btn btn-warning text-white" [routerLink]="['/supplier/update/', datos.id]"
+                      routerLinkActive="active" title="Actualizar registro">
+                      <i class="far fa-edit awsomeIcon"></i>
+                      <label class="awsomeTitle"> Editar</label>
+                    </a>
+                  </div>
+                </td>
+              </tr>
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <br>
-  <br>
-  <div class="container text-center">
-    <button class="btn btn-secondary">
-      <a class="text-white" href="/supplier/all">
-        <i class="fas fa-undo-alt awsomeIcon"></i>
-        <label class="awsomeTitle"> Volver</label>
-      </a>
-    </button>
+    <br>
+    <br>
+    <div class="container text-center">
+      <button class="btn btn-secondary">
+        <a class="text-white" href="/supplier/all">
+          <i class="fas fa-undo-alt awsomeIcon"></i>
+          <label class="awsomeTitle"> Volver</label>
+        </a>
+      </button>
+
+    </div>
 
   </div>
+</ng-template>
 
-</div>
 <br> <br>
 <p></p>
 <p></p>

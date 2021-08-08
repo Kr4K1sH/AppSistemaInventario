@@ -3,6 +3,14 @@
 <ng-template #loading>
   <div class="loader">Loading...</div>
 </ng-template>
+
+<div class="container p-3 text-center">
+
+  <input type="text" class="form-control" name="searchText" width="25px" placeholder="Buscar" [(ngModel)]="searchText"/>
+  <br>
+  <!-- <button class="bttn btn-primary" title="Buscar Producto">Buscar</button> -->
+
+</div>
 <div class="col-md-13 container titleProduct">
   <div class="card ">
     <h5 class="card-header bg-dark text-center titleProduct">Registro de todos los Productos</h5>
@@ -23,7 +31,7 @@
           </thead>
           <tbody>
             <ng-template [ngIf]="datos" [ngIfElse]="loading">
-              <tr *ngFor="let item of datos">
+              <tr *ngFor="let item of datos |filter:searchText">
                 <td>{{item.id}}</td>
                 <td>
                   <div class="m-r-10"><img src="{{item.imagen}}" alt="{{item.nombre}}" title="{{item.nombre}}" class="rounded"

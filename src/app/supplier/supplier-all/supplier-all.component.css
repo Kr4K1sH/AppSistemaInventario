@@ -1,3 +1,19 @@
 .titleSupplier{
   color: #B68D40;
+  padding: 1.5em;
+  border-radius: 16px;
+}
+
+.bgcontainer{
+  background-color: #b8b4b473;
+  padding: 1em;
+  border-radius: 16px;
+}
+
+.fecha{
+  color: rgb(240, 171, 44);
+}
+
+.movement{
+  color:rgb(72, 69, 235);
 }

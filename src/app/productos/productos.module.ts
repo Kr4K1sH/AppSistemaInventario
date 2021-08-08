@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     ProductosUpdateComponent,
     ProductosUbicacionComponent,
 
+
   ],
   imports: [
     CommonModule,

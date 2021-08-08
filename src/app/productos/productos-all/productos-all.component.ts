@@ -13,15 +13,19 @@ import { GenericService } from 'src/app/share/generic.service';
 export class ProductAllComponent implements OnInit{
 
   datos: any;
+  searchText = '';
+
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private gService: GenericService
+    private gService: GenericService,
+
   ) {}
 
   ngOnInit(): void {
     this.listaProductosAdmin();
+
   }
 
   listaProductosAdmin() {
