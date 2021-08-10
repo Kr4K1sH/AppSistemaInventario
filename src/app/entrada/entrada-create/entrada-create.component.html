@@ -127,7 +127,7 @@
               </td>
               <td class="center">
                 <input type="number" class="form-control mb-2" [(ngModel)]="item.cantidad"
-                  (change)="actualizarCantidad(item)" min="1" max="{{item.product.cantidad_total}}"
+                  (change)="actualizarCantidad(item)" min="1" max="{{item.product.cantidad_maxima}}"
                   placeholder="Cantidad a mover">
               </td>
 
